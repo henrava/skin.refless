@@ -1,0 +1,9 @@
+*.bat
+*.cmd
+*.log
+*.xbt
+*.exe
+*.py
+colors/test.xml
+720p/script-skinshortcuts-includes.xml
+720p/Custom_Debug_Overlay.xml
