@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<include>transition_Dialog</include>
+	<coordinates>
+		<system>1</system>
+		<left>400</left>
+		<top>5</top>
+	</coordinates>
+	<controls>
+		<control type="group">
+			<visible>![Window.IsActive(startup) | Window.IsActive(fullscreenvideo) | Window.IsActive(infodialog)]</visible>
+			<control type="image">
+				<description>background window</description>
+				<width>480</width>
+				<height>160</height>
+				<include>dialog_Window</include>
+			</control>
+			<control type="progress" id="32">
+				<description>progress control</description>
+				<left>20</left>
+				<top>120</top>
+				<width>440</width>
+				<height>16</height>
+				<reveal>true</reveal>
+				<include>dialog_Progress</include>
+			</control>
+			<!--line 1-->
+			<control type="label" id="40">
+				<description>Header Label</description>
+				<label>$INFO[Control.GetLabel(30),,: ]$INFO[Control.GetLabel(32),,%]</label>
+				<left>20</left>
+				<top>20</top>
+				<include>dialog_Text</include>
+			</control>
+			<!--line 2-->
+			<control type="label" id="31">
+				<description>Line 2 Label</description>
+				<label>$INFO[Control.GetLabel(30),,: ]$INFO[Control.GetLabel(32),,%]</label>
+				<left>20</left>
+				<top>50</top>
+				<include>dialog_Text</include>
+			</control>
+			<control type="label" id="30">
+				<visible>false</visible>
+			</control>
+		</control>
+	</controls>
+</window>

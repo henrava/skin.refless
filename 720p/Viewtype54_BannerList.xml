@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<!--VIEWTYPE54 - BANNERS LIST - TVSHOWS ONLY-->
+	<include name="Viewtype54_BannerList">
+		<control type="panel" id="54">
+			<viewtype label="31110">wide</viewtype>
+			<left>35</left>
+			<top>90</top>
+			<width>572</width>
+			<height>615</height>
+			<onleft>6000</onleft>
+			<onright>70</onright>
+			<onup>54</onup>
+			<ondown>54</ondown>
+			<pagecontrol>70</pagecontrol>
+			<preloaditems>2</preloaditems>
+			<orientation>vertical</orientation>
+			<include>global_Scrolltime</include>
+			<include>transition_Content</include>
+			<include>transition_Info</include>
+			<include>toggle_Menu</include>
+			<visible>Container.Content(tvshows) | Container.Content(seasons)</visible>
+			<itemlayout width="572" height="123">
+				<include>view_Banner-ContainerCommons</include>
+			</itemlayout>
+			<focusedlayout width="572" height="123">
+				<control type="image">
+					<width>572</width>
+					<height>117</height>
+					<include>art_Frame-fo</include>
+					<colordiffuse>Color8</colordiffuse>
+				</control>
+				<include>view_Banner-ContainerCommons</include>
+			</focusedlayout>
+		</control>
+		<!--container info-->
+		<control type="group">
+			<left>645</left>
+			<top>85</top>
+			<include>toggle_Menu</include>
+			<include>transition_Content</include>
+			<include>transition_Info</include>
+			<visible>Control.IsVisible(54) + Container.Content(tvshows)</visible>
+			<control type="grouplist">
+				<itemgap>1</itemgap>
+				<control type="label" id="1">
+					<width>550</width>
+					<label>$VAR[global_Title]</label>
+					<include>detail_Title</include>
+				</control>
+				<control type="label">
+					<width>550</width>
+					<label>$INFO[ListItem.Property(UnWatchedEpisodes),, $LOCALIZE[20360] $LOCALIZE[16101]]</label>
+					<include>detail_Sub</include>
+					<visible>Container.Content(tvshows)</visible>
+				</control>
+				<control type="textbox" id="4">
+					<width>570</width>
+					<height>450</height>
+					<label>$VAR[global_Plot]</label>
+					<include>detail_Text</include>
+				</control>
+			</control>
+			<control type="image">
+				<bottom>30</bottom>
+				<left>450</left>
+				<width>64</width>
+				<height>64</height>
+				<aspectratio align="left" aligny="center">keep</aspectratio>
+				<texture>flags/rating/star.png</texture>
+				<colordiffuse>Color1</colordiffuse>
+				<visible>!IsEmpty(Listitem.Rating)</visible>
+			</control>
+			<control type="label">
+				<bottom>30</bottom>
+				<left>510</left>
+				<width>48</width>
+				<height>64</height>
+				<font>bold_32</font>
+				<textcolor>Color1</textcolor>
+				<label>$INFO[ListItem.Rating]</label>
+				<visible>!IsEmpty(Listitem.Rating)</visible>
+			</control>
+			<control type="image">
+				<bottom>30</bottom>
+				<left>150</left>
+				<width>232</width>
+				<height>90</height>
+				<aspectratio align="center" aligny="bottom">keep</aspectratio>
+				<texture>$VAR[art_ClearLogo]</texture>
+			</control>
+			<control type="image">
+				<bottom>30</bottom>
+				<width>96</width>
+				<height>64</height>
+				<aspectratio align="left">keep</aspectratio>
+				<texture fallback="flags/studios/Default.png">$INFO[ListItem.Studio,flags/studios/,.png]</texture>
+				<visible>Control.IsVisible(54) + [Container.Content(tvshows) | Container.Content(seasons)]</visible>
+			</control>
+		</control>
+	</include>
+	<include name="view_Banner-ContainerCommons">
+		<control type="image">
+			<width>572</width>
+			<height>117</height>
+			<include>art_Frame-nf</include>
+		</control>
+		<control type="group">
+			<left>7</left>
+			<top>7</top>
+			<control type="image">
+				<width>558</width>
+				<height>104</height>
+				<texture background="true" fallback="thumbs/default_Banner.png">$VAR[thumb_Banner]</texture>
+				<aspectratio>stretch</aspectratio>
+			</control>
+			<!-- Watched status -->
+			<control type="image">
+				<left>131</left>
+				<top>231</top>
+				<width>48</width>
+				<height>48</height>
+				<texture>$VAR[status_Overlay_Big]</texture>
+			</control>
+		</control>
+	</include>
+</includes>

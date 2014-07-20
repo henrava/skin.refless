@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<!-- HOME MAIN MENU -->
+	<include name="HomeMenuHorizontal">
+		<control type="group" id="9000">
+			<top>620</top>
+			<width>1280</width>
+			<height>64</height>
+			<!--shutdown-->
+			<control type="button" id="9001">
+				<left>8</left>
+				<width>64</width>
+				<height>64</height>
+				<font>icomoon_48</font>
+				<align>center</align>
+				<aligny>center</aligny>
+				<textcolor>Color3</textcolor>
+				<focusedcolor>Color5</focusedcolor>
+				<texturenofocus colordiffuse="base2_cc">white.png</texturenofocus>
+				<texturefocus colordiffuse="Color1">white.png</texturefocus>
+				<!--command is alt+e600 - ¯ÿÇ - font is icomoon - label is poweroff-->
+				<label></label>
+				<onclick>ActivateWindow(ShutdownMenu)</onclick>
+				<onright>9100</onright>
+			</control>
+			<control type="fixedlist" id="9100">
+				<left>73</left>
+				<width min="240" max="1280">1280</width>
+				<height>64</height>
+				<onup>9200</onup>
+				<ondown></ondown>
+				<onright>9100</onright>
+				<onleft>9001</onleft>
+				<itemgap>2</itemgap>
+				<pagecontrol>80</pagecontrol>
+				<include>global_ListScroll</include>
+				<orientation>horizontal</orientation>
+				<focusposition>0</focusposition>
+				<movement>4</movement>
+				<animation effect="slide" start="0" end="-120" condition="StringCompare(Container(9100).NumItems,2)">Conditional</animation>
+				<animation effect="slide" start="0" end="-120" condition="StringCompare(Container(9100).NumItems,4)">Conditional</animation>
+				<itemlayout width="240" height="64">
+					<control type="group">
+						<control type="image">
+							<width>239</width>
+							<height>64</height>
+							<texture colordiffuse="base2_cc">white.png</texture>
+						</control>
+						<control type="label">
+							<left>120</left>
+							<height>64</height>
+							<width>240</width>
+							<align>center</align>
+							<aligny>center</aligny>
+							<font>condensed_48-U</font>
+							<textcolor>Color1</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+					</control>
+				</itemlayout>
+				<focusedlayout width="240" height="64">
+					<control type="group">
+						<visible>Control.HasFocus(9100)</visible>
+						<control type="image">
+							<width>239</width>
+							<height>64</height>
+							<texture colordiffuse="white_cc">white.png</texture>
+						</control>
+						<control type="label">
+							<left>120</left>
+							<height>64</height>
+							<width>240</width>
+							<align>center</align>
+							<aligny>center</aligny>
+							<font>condensed_48-U</font>
+							<textcolor>Focused</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+					</control>
+					<control type="group">
+						<visible>!Control.HasFocus(9100)</visible>
+						<control type="image">
+							<width>239</width>
+							<height>64</height>
+							<texture colordiffuse="base3_cc">white.png</texture>
+						</control>
+						<control type="label">
+							<left>120</left>
+							<height>64</height>
+							<width>240</width>
+							<align>center</align>
+							<aligny>center</aligny>
+							<label>$INFO[ListItem.Label]</label>
+							<font>condensed_48-U</font>
+							<textcolor>Color1</textcolor>
+						</control>
+					</control>
+				</focusedlayout>
+				<content>
+					<include>skinshortcuts-mainmenu</include>
+					<item id="1001">
+						<!--music/video playlist (when playing)-->
+						<label>$LOCALIZE[559]</label>
+						<onclick condition="Player.HasAudio">ActivateWindow(musicplaylist)</onclick>
+						<onclick condition="Player.HasVideo">ActivateWindow(videoplaylist)</onclick>
+						<visible>Player.HasMedia + Skin.HasSetting(home.nowplaying)</visible>
+					</item>
+				</content>
+			</control>
+			<!--end list 9100-->
+			<!--SUB MENU-->
+			<control type="fixedlist" id="9200">
+				<left>73</left>
+				<top>-55</top>
+				<width min="240" max="1200">1200</width>
+				<height>48</height>
+				<onback>9100</onback>
+				<onleft>9200</onleft>
+				<onright>9200</onright>
+				<ondown>9100</ondown>
+				<itemgap>0</itemgap>
+				<focusposition>0</focusposition>
+				<movement>4</movement>
+				<preloaditems>4</preloaditems>
+				<pagecontrol>80</pagecontrol>
+				<include>global_ListScroll</include>
+				<orientation>horizontal</orientation>
+				<animation effect="slide" start="0" end="-120" condition="StringCompare(Container(9200).NumItems,2)">Conditional</animation>
+				<animation effect="slide" start="0" end="-120" condition="StringCompare(Container(9200).NumItems,4)">Conditional</animation>
+				<itemlayout width="240" height="48">
+					<control type="image">
+						<width>240</width>
+						<height>48</height>
+						<texture colordiffuse="base3_cc">white.png</texture>
+					</control>
+					<control type="label">
+						<left>118</left>
+						<width>236</width>
+						<height>48</height>
+						<label>$INFO[ListItem.Label]</label>
+						<font>condensed_36-U</font>
+						<align>center</align>
+						<aligny>center</aligny>
+						<textcolor>Color1</textcolor>
+					</control>
+				</itemlayout>
+				<focusedlayout width="240" height="48">
+					<control type="group">
+						<visible>Control.HasFocus(9200)</visible>
+						<control type="image">
+							<width>240</width>
+							<height>48</height>
+							<texture colordiffuse="white_cc">white.png</texture>
+						</control>
+						<control type="label">
+							<left>118</left>
+							<width>236</width>
+							<height>48</height>
+							<label>$INFO[ListItem.Label]</label>
+							<font>condensed_36-U</font>
+							<align>center</align>
+							<aligny>center</aligny>
+							<textcolor>Color5</textcolor>
+						</control>
+					</control>
+					<control type="group">
+						<visible>!Control.HasFocus(9200)</visible>
+						<control type="image">
+							<width>240</width>
+							<height>48</height>
+							<texture colordiffuse="base3_cc">white.png</texture>
+						</control>
+						<control type="label">
+							<left>118</left>
+							<width>236</width>
+							<height>48</height>
+							<font>condensed_36-U</font>
+							<align>center</align>
+							<aligny>center</aligny>
+							<textcolor>Color1</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+					</control>
+				</focusedlayout>
+				<content>
+					<include>skinshortcuts-submenu</include>
+				</content>
+			</control>
+		</control>
+		<!-- end group 9000 -->
+	</include>
+	<include name="HomeMenuVertical">
+		<!--MAIN MENU-->
+		<control type="group" id="9000">
+			<width>300</width>
+			<control type="image">
+				<width>300</width>
+				<height>screen_Height</height>
+				<texture background="true">white.png</texture>
+				<colordiffuse>base1_80</colordiffuse>
+			</control>
+			<control type="list" id="9100">
+				<left>0</left>
+				<top>10</top>
+				<width>300</width>
+				<height min="50" max="screen_Height">auto</height>
+				<onback>9100</onback>
+				<onup>9110</onup>
+				<ondown>9100</ondown>
+				<onright condition="Skin.HasSetting(widgets.disable) + !IsEmpty(Container(9100).ListItem.Property(Widget))">9300</onright>
+				<onleft>RunScript(script.skinshortcuts,type=hidesubmenu&amp;mainmenuID=9100)</onleft>
+				<onback>RunScript(script.skinshortcuts,type=hidesubmenu&amp;mainmenuID=9100)</onback>
+				<itemgap>0</itemgap>
+				<pagecontrol>80</pagecontrol>
+				<include>global_ListScroll</include>
+				<orientation>vertical</orientation>
+				<itemlayout width="300" height="50">
+					<control type="group">
+						<left>5</left>
+						<control type="image">
+							<width>290</width>
+							<height>49</height>
+							<texture colordiffuse="base2_80">white.png</texture>
+							<visible>IsEmpty(ListItem.Property(isSubmenu))</visible>
+						</control>
+						<control type="image">
+							<width>290</width>
+							<height>49</height>
+							<texture colordiffuse="base3_80">white.png</texture>
+							<visible>!IsEmpty(ListItem.Property(isSubmenu))</visible>
+						</control>
+					</control>
+					<control type="group">
+						<left>15</left>
+						<control type="label">
+							<width>280</width>
+							<height>46</height>
+							<font>condensed_36-U</font>
+							<textcolor>Color1</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+						</control>
+						<control type="label">
+							<right>5</right>
+							<width>15</width>
+							<height>43</height>
+							<label>›</label>
+							<font>condensed_36-U</font>
+							<align>right</align>
+							<visible>!IsEmpty(ListItem.Property(hasSubmenu))</visible>
+							<visible>!StringCompare(ListItem.Property("submenuVisibility"),Window(10000).Property("submenuVisibility") )</visible>
+						</control>
+					</control>
+				</itemlayout>
+				<focusedlayout width="300" height="50">
+					<control type="image">
+						<left>5</left>
+						<top>0</top>
+						<width>290</width>
+						<height>49</height>
+						<texture colordiffuse="white_cc">white.png</texture>
+					</control>
+					<control type="group">
+						<left>15</left>
+						<control type="label">
+							<height>46</height>
+							<width>280</width>
+							<font>condensed_36-U</font>
+							<textcolor>Focused</textcolor>
+							<label>$INFO[ListItem.Label]</label>
+						</control>	
+						<control type="label">
+							<right>5</right>
+							<width>15</width>
+							<height>43</height>
+							<label>›</label>
+							<font>condensed_36-U</font>
+							<align>right</align>
+							<textcolor>Focused</textcolor>
+							<visible>!IsEmpty(ListItem.Property(hasSubmenu))</visible>
+							<visible>!StringCompare(ListItem.Property("submenuVisibility"),Window(10000).Property("submenuVisibility") )</visible>
+						</control>
+					</control>
+				</focusedlayout>
+				<content>
+					 <include>skinshortcuts-allmenus</include>
+					<item id="1001">
+						<!--music/video playlist (when playing)-->
+						<label>$LOCALIZE[559]</label>
+						<onclick condition="Player.HasAudio">ActivateWindow(musicplaylist)</onclick>
+						<onclick condition="Player.HasVideo">ActivateWindow(videoplaylist)</onclick>
+						<visible>Player.HasMedia + Skin.HasSetting(home.nowplaying)</visible>
+					</item>
+				</content>
+			</control>
+		</control>
+	</include>
+</includes>

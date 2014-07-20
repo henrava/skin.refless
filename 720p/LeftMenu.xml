@@ -1,0 +1,734 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<include name="menu_Commons">
+		<left>-262</left>
+		<control type="image" id="1">
+			<width>270</width>
+			<height>screen_Height</height>
+			<texture background="true">white.png</texture>
+			<colordiffuse>base2_cc</colordiffuse>
+		</control>
+		<animation type="Conditional" reversible="true" condition="ControlGroup(6000).HasFocus() | ControlGroup(4000).HasFocus()">
+			<effect type="slide" time="350" start="0" end="262" tween="Quadratic" easing="Out" />
+		</animation>
+		<include>transition_Content</include>
+		<include>transition_Info</include>
+		<visible>!Skin.HasSetting(global.kiosk)</visible>
+	</include>
+	<include name="menu_ContainerCommons">
+		<top>41</top>
+		<width>270</width>
+		<height>670</height>
+		<onleft>noop</onleft>
+		<onright>50</onright>
+		<onup>6000</onup>
+		<ondown>6000</ondown>
+		<onback>50</onback>
+		<itemgap>0</itemgap>
+		<animation type="Conditional" reversible="true" condition="ControlGroup(4000).HasFocus()">
+			<effect type="fade" time="0" start="100" end="0" tween="Quadratic" easing="Out" />
+		</animation>
+	</include>
+	<include name="menu_SubContainerCommons">
+		<top>41</top>
+		<onup>4000</onup>
+		<ondown>4000</ondown>
+		<width>270</width>
+		<height>670</height>
+		<onleft>6000</onleft>
+		<onright>50</onright>
+		<onback>6000</onback>
+		<itemgap>0</itemgap>
+		<visible allowhiddenfocus="true">ControlGroup(4000).HasFocus()</visible>
+	</include>
+	<include name="menu_Header">
+		<height>50</height>
+		<font>semibold_20-U</font>
+		<textoffsetx>15</textoffsetx>
+		<textoffsety>4</textoffsety>
+		<textcolor>Color8</textcolor>
+	</include>
+	<include name="menu_Button">
+		<width>270</width>
+		<height>40</height>
+		<font>light_22</font>
+		<textcolor>Color3</textcolor>
+		<focusedcolor>Color1</focusedcolor>
+		<textoffsety>3</textoffsety>
+		<textoffsetx>15</textoffsetx>
+		<texturenofocus>-</texturenofocus>
+		<texturefocus colordiffuse="Color6">white.png</texturefocus>
+		<alttexturefocus colordiffuse="Color6">white.png</alttexturefocus>
+		<alttexturenofocus>-</alttexturenofocus>
+		<onback condition="ControlGroup(6000).HasFocus()">50</onback>
+		<onback condition="ControlGroup(4000).HasFocus()">6000</onback>
+		<onclick condition="ControlGroup(4000).HasFocus()">back</onclick>
+	</include>
+	<include name="menu_RadioButton">
+		<textureradioonnofocus colordiffuse="Color3">dialogs/radio/on.png</textureradioonnofocus>
+		<textureradiooffnofocus colordiffuse="Color3">dialogs/radio/off.png</textureradiooffnofocus>
+		<textureradioonfocus colordiffuse="Color3">dialogs/radio/on.png</textureradioonfocus>
+		<textureradioofffocus colordiffuse="Color3">dialogs/radio/off.png</textureradioofffocus>
+		<radiowidth>29</radiowidth>
+		<radioheight>24</radioheight>
+		<disabledcolor>Disabled</disabledcolor>
+	</include>
+	<!--COMMON CONTROLS-->
+	<include name="menu_ViewMode">
+		<control type="label" id="102">
+			<height>50</height>
+			<label>31102</label>
+			<include>menu_Header</include>
+		</control>
+		<control type="button" id="103">
+			<label>$LOCALIZE[31114]$INFO[Container.ViewMode,: ]</label>
+			<include>menu_Button</include>
+			<onclick>SetFocus(4000)</onclick>
+		</control>
+	</include>
+	<include name="menu_Sorting">
+		<control type="label" id="200">
+			<height>50</height>
+			<label>$LOCALIZE[31140]</label>
+			<include>menu_Header</include>
+		</control>
+		<control type="button" id="201">
+			<label>$LOCALIZE[31149]$INFO[Container.SortMethod,: ]</label>
+			<onclick>SendClick(3)</onclick>
+			<include>menu_Button</include>
+		</control>
+		<control type="togglebutton" id="202">
+			<label>$LOCALIZE[21429]: $LOCALIZE[584]</label>
+			<altlabel>$LOCALIZE[21429]: $LOCALIZE[585]</altlabel>
+			<include>menu_Button</include>
+			<onclick>SendClick(4)</onclick>
+			<enable>Control.IsEnabled(4)</enable>
+		</control>
+	</include>
+	<include name="menu_LibraryHeader">
+		<control type="label" id="208">
+			<label>$LOCALIZE[14022]</label>
+			<include>menu_Header</include>
+		</control>
+	</include>
+	<include name="menu_Shares">
+		<control type="radiobutton" id="209">
+			<label>$LOCALIZE[20336]</label>
+			<onclick>XBMC.Mastermode</onclick>
+			<selected>System.IsMaster</selected>
+			<include>menu_RadioButton</include>
+			<include>menu_Button</include>
+			<visible>System.HasLocks</visible>
+		</control>
+	</include>
+	<include name="menu_SwitchMode">
+		<control type="togglebutton" id="210">
+			<label>$LOCALIZE[31150]</label>
+			<altlabel>$LOCALIZE[29800]</altlabel>
+			<onclick>ReplaceWindow(MusicFiles)</onclick>
+			<altclick>ReplaceWindow(MusicLibrary)</altclick>
+			<usealttexture>Window.IsVisible(MusicFiles)</usealttexture>
+			<include>menu_Button</include>
+			<visible>Window.IsActive(MusicLibrary) | Window.IsActive(MusicFiles)</visible>
+		</control>
+	</include>
+	<include name="menu_Watched">
+		<control type="radiobutton" id="14">
+			<label>$LOCALIZE[20367]</label>
+			<include>menu_Button</include>
+			<include>menu_RadioButton</include>
+			<visible>Control.IsEnabled(14)</visible>
+		</control>
+	</include>
+	<include name="menu_Filter">
+		<control type="edit" id="213">
+			<label>$LOCALIZE[587]</label>
+			<include>menu_Button</include>
+			<onclick>SendClick(8)</onclick>
+			<visible>Container.CanFilter + !Container.CanFilterAdvanced</visible>
+		</control>
+		<control type="button" id="214">
+			<label>$LOCALIZE[587]</label>
+			<onclick>right</onclick>
+			<onclick>Filter</onclick>
+			<include>menu_Button</include>
+			<visible>Container.CanFilterAdvanced</visible>
+		</control>
+	</include>
+	<include name="menu_PartyMode">
+		<control type="radiobutton" id="215">
+			<label>$LOCALIZE[589]</label>
+			<onclick condition="Window.IsVisible(MusicLibrary)">PlayerControl(PartyMode(music))</onclick>
+			<onclick condition="Container.Content(musicvideos)">PlayerControl(PartyMode(video))</onclick>
+			<include>menu_Button</include>
+			<include>menu_RadioButton</include>
+			<visible>Container.Content(musicvideos) | Window.IsVisible(MusicLibrary)</visible>
+		</control>
+	</include>
+	<include name="menu_Update">
+		<control type="togglebutton" id="216">
+			<label>$LOCALIZE[653]</label>
+			<altlabel>$LOCALIZE[13353]</altlabel>
+			<onclick>SetFocus(50)</onclick>
+			<onclick condition="Window.IsActive(videolibrary)">XBMC.CleanLibrary(video)</onclick>
+			<onclick condition="Window.IsActive(musiclibrary)">XBMC.CleanLibrary(music)</onclick>
+			<onclick>SendClick(20)</onclick>
+			<usealttexture>Library.IsScanningVideo | Library.IsScanningMusic</usealttexture>
+			<include>menu_Button</include>
+		</control>
+	</include>
+	<include name="menu_Search">
+		<control type="button" id="217">
+			<label>$LOCALIZE[137]</label>
+			<onclick>SetFocus(300)</onclick>
+			<onclick condition="!Skin.HasSetting(search.globalsearch)">SendClick(8)</onclick>
+			<onclick condition="Skin.HasSetting(search.globalsearch)">RunAddon(script.globalsearch)</onclick>
+			<include>menu_Button</include>
+		</control>
+	</include>
+	<include name="menu_ControlsButton">
+		<width>40</width>
+		<height>40</height>
+	</include>
+	<include name="menu_Playing">
+		<control type="label" id="218">
+			<label>$LOCALIZE[31034]</label>
+			<include>menu_Header</include>
+			<visible>Control.IsVisible(219) | Control.IsVisible(230)</visible>
+		</control>
+		<!--playing media / current playlist-->
+		<control type="button" id="219">
+			<label>$VAR[playing_Title]</label>
+			<onclick condition="Player.HasVideo">fullscreen</onclick>
+			<onclick condition="Player.HasAudio | !Player.HasMedia">$VAR[playlist_Type]</onclick>
+			<include>menu_Button</include>
+			<visible>[Player.HasMedia | !Player.HasMedia + Skin.HasSetting(menu.playlist) + [[Window.IsActive(videolibrary) + !StringCompare(Playlist.Length(video),0)] | [[Window.IsActive(musiclibrary) | Window.IsActive(musicfiles)]+ !StringCompare(Playlist.Length(music),0)]]]</visible>
+		</control>
+		<!--player controls-->
+		<control type="group" id="230">
+			<onright>50</onright>
+			<visible>Player.HasMedia + StringCompare(Skin.String(menu.controls),player)</visible>
+			<control type="image">
+				<texture colordiffuse="Color3">white.png</texture>
+				<width>270</width>
+				<height>48</height>
+				<aspectratio>stretch</aspectratio>
+				<visible>ControlGroup(230).HasFocus()</visible>
+			</control>
+			<control type="grouplist" id="231">
+				<left>15</left>
+				<top>4</top>
+				<width>250</width>
+				<onback>50</onback>
+				<onleft>231</onleft>
+				<onright>50</onright>
+				<onup>217</onup>
+				<ondown>102</ondown>
+				<itemgap>10</itemgap>
+				<orientation>horizontal</orientation>
+				<!--previous-->
+				<control type="button" id="232">
+					<texturefocus colordiffuse="Color3">player/prev-fo.png</texturefocus>
+					<texturenofocus colordiffuse="Color1">player/prev-nf.png</texturenofocus>
+					<include>menu_ControlsButton</include>
+					<onclick>PlayerControl(Previous)</onclick>
+				</control>
+				<!--pause-->
+				<control type="togglebutton" id="233">
+					<texturenofocus colordiffuse="Color3">player/pause-nf.png</texturenofocus>
+					<texturefocus colordiffuse="Color1">player/pause-fo.png</texturefocus>
+					<alttexturenofocus colordiffuse="Color3">player/play-nf.png</alttexturenofocus>
+					<alttexturefocus colordiffuse="Color1">player/play-fo.png</alttexturefocus>
+					<usealttexture>Player.Paused | Player.Forwarding | Player.Rewinding</usealttexture>
+					<include>menu_ControlsButton</include>
+					<onclick>PlayerControl(Play)</onclick>
+					<enable>Player.PauseEnabled</enable>
+				</control>
+				<!--stop-->
+				<control type="button" id="234">
+					<texturefocus colordiffuse="Color1">player/stop-fo.png</texturefocus>
+					<texturenofocus colordiffuse="Color3">player/stop-nf.png</texturenofocus>
+					<include>menu_ControlsButton</include>
+					<onclick>PlayerControl(Stop)</onclick>
+				</control>
+				<!--next-->
+				<control type="button" id="235">
+					<texturefocus colordiffuse="Color1">player/next-fo.png</texturefocus>
+					<texturenofocus colordiffuse="Color3">player/next-nf.png</texturenofocus>
+					<include>menu_ControlsButton</include>
+					<onclick>PlayerControl(Next)</onclick>
+				</control>
+				<!--fullscreen-->
+				<control type="button" id="240">
+					<texturefocus colordiffuse="Color5">player/fullscreen-fo.png</texturefocus>
+					<texturenofocus colordiffuse="Color4">player/fullscreen-nf.png</texturenofocus>
+					<include>menu_ControlsButton</include>
+					<onclick>fullscreen</onclick>
+					<visible>Player.HasVideo | [Player.HasAudio + Window.IsActive(musicplaylist)]</visible>
+				</control>
+				<!--playlist-->
+				<control type="button" id="241">
+					<texturefocus colordiffuse="Color5">player/playlist-fo.png</texturefocus>
+					<texturenofocus colordiffuse="Color4">player/playlist-nf.png</texturenofocus>
+					<include>menu_ControlsButton</include>
+					<onclick>ActivateWindow(musicplaylist)</onclick>
+					<visible>Player.HasAudio + !Window.IsActive(musicplaylist)</visible>
+				</control>
+			</control>
+		</control>
+	</include>
+	<!--VIDEO MENU-->
+	<include name="menu_Video">
+		<control type="group">
+			<include>menu_Commons</include>
+			<control type="grouplist" id="6000">
+				<include>menu_ContainerCommons</include>
+				<include>menu_ViewMode</include>
+				<!--viewtype options-->
+				<!--list: poster or fanart-->
+				<control type="togglebutton" id="110">
+					<label>$LOCALIZE[31120]: $LOCALIZE[31121]</label>
+					<altlabel>$LOCALIZE[31120]: $LOCALIZE[31122]</altlabel>
+					<onclick>Skin.ToggleSetting(view.list.fanart)</onclick>
+					<usealttexture>!Skin.HasSetting(view.list.fanart)</usealttexture>
+					<include>menu_Button</include>
+					<visible>Control.IsVisible(50) + [Container.Content(movies) | Container.Content(tvshows)] + !SubString(Container.FolderPath,plugin://)</visible>
+				</control>
+				<!--biglist: poster or fanart-->
+				<control type="togglebutton" id="111">
+					<label>$LOCALIZE[31120]: $LOCALIZE[31121]</label>
+					<altlabel>$LOCALIZE[31120]: $LOCALIZE[31122]</altlabel>
+					<onclick>Skin.ToggleSetting(view.biglist.posters)</onclick>
+					<usealttexture>Skin.HasSetting(view.biglist.posters)</usealttexture>
+					<include>menu_Button</include>
+					<visible>Control.IsVisible(51) + !Container.Content(episodes) + !SubString(Container.FolderPath,plugin://)</visible>
+				</control>
+				<!--thumbnails: small or large grid-->
+				<control type="button" id="112">
+					<label>$VAR[view_Layout]</label>
+					<onclick condition="Control.IsVisible(571) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(sets)]">Container.SetViewMode(57)</onclick>
+					<onclick condition="Control.IsVisible(57) + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(sets)]">Container.SetViewMode(571)</onclick>
+					<onclick condition="Control.IsVisible(574) + Container.Content(addons)">Container.SetViewMode(572)</onclick>
+					<onclick condition="Control.IsVisible(572) + Container.Content(addons)">Container.SetViewMode(574)</onclick>
+					<include>menu_Button</include>
+					<visible>[Control.IsVisible(57) | Control.IsVisible(571) | Control.IsVisible(572) | Control.IsVisible(574)] + [Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(sets) | Container.Content(addons)]</visible>
+				</control>
+				<!--options-->
+				<!--toggle global fanart-->
+				<control type="togglebutton" id="115">
+					<label>31730</label>
+					<onclick>Skin.ToggleSetting(fanart.global)</onclick>
+					<include>menu_Button</include>
+				</control>
+				<!--toggle fanart/curtains-->
+				<control type="button" id="116">
+					<label>31731</label>
+					<label2>$VAR[label_BgType]</label2>
+					<onclick condition="IsEmpty(Skin.String(bgvideo.type))">Skin.SetString(bgvideo.type,fanart)</onclick>
+					<onclick condition="StringCompare(Skin.String(bgvideo.type),curtains)">Skin.SetString(bgvideo.type,fanart)</onclick>
+					<onclick condition="StringCompare(Skin.String(bgvideo.type),fanart)">Skin.SetString(bgvideo.type,curtains)</onclick>
+					<enable>!Skin.HasSetting(fanart.global)</enable>
+					<include>menu_Button</include>
+				</control>
+				<!--Set Transparency-->
+				<control type="button" id="117">
+					<label>31732</label>
+					<label2>$VAR[label_AlphaType]</label2>
+					<onclick condition="IsEmpty(Skin.String(alphavideo.type))">Skin.SetString(alphavideo.type,100)</onclick>
+					<onclick condition="StringCompare(Skin.String(alphavideo.type),100)">Skin.SetString(alphavideo.type,90)</onclick>
+					<onclick condition="StringCompare(Skin.String(alphavideo.type),90)">Skin.SetString(alphavideo.type,80)</onclick>
+					<onclick condition="StringCompare(Skin.String(alphavideo.type),80)">Skin.SetString(alphavideo.type,50)</onclick>
+					<onclick condition="StringCompare(Skin.String(alphavideo.type),50)">Skin.SetString(alphavideo.type,25)</onclick>
+					<onclick condition="StringCompare(Skin.String(alphavideo.type),25)">Skin.SetString(alphavideo.type,0)</onclick>
+					<onclick condition="StringCompare(Skin.String(alphavideo.type),0)">Skin.SetString(alphavideo.type,100)</onclick>
+					<include>menu_Button</include>
+				</control>
+
+				<include>menu_Sorting</include>
+				<include>menu_LibraryHeader</include>
+				<include>menu_Shares</include>
+				<include>menu_Watched</include>
+				<include>menu_Filter</include>
+				<include>menu_PartyMode</include>
+				<include>menu_Update</include>
+				<include>menu_Search</include>
+				<include>menu_Playing</include>
+				<include condition="!IsEmpty(Skin.String(menu.controls))">menu_ControlsButton</include>
+			</control>
+			<!--viewtypes-->
+			<control type="group">
+				<control type="grouplist" id="4000">
+					<include>menu_SubContainerCommons</include>
+					<control type="label" id="401">
+						<label>$LOCALIZE[31100]</label>
+						<include>menu_Header</include>
+					</control>
+					<!--list-->
+					<control type="button" id="402">
+						<label>$LOCALIZE[535]</label>
+						<include>menu_Button</include>
+						<onclick>Container.SetViewMode(50)</onclick>
+					</control>
+					<!--big list-->
+					<control type="button" id="403">
+						<label>$LOCALIZE[537]</label>
+						<include>menu_Button</include>
+						<onclick>Container.SetViewMode(51)</onclick>
+						<visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(episodes)</visible>
+					</control>
+					<!--slide portrait-->
+					<control type="button" id="404">
+						<label>$LOCALIZE[31112]</label>
+						<include>menu_Button</include>
+						<onclick>Container.SetViewMode(52)</onclick>
+						<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(sets)]</visible>
+					</control>
+					<!--thumbnails portrait-->
+					<control type="button" id="407">
+						<label>$LOCALIZE[31113]</label>
+						<include>menu_Button</include>
+						<onclick>Container.SetViewMode(57)</onclick>
+						<visible>Container.Content(movies) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(sets) | Container.Content(actors) | Container.Content(artists)</visible>
+					</control>
+					<!--thumbnails square-->
+					<control type="button" id="409">
+						<label>$LOCALIZE[31113]</label>
+						<include>menu_Button</include>
+						<onclick>Container.SetViewMode(572)</onclick>
+						<visible>Container.Content(addons) | [Container.Content(files) + SubString(Container.FolderPath,plugin://plugin)]</visible>
+					</control>
+					<!--banners-->
+					<control type="button" id="410">
+						<label>$LOCALIZE[31110]</label>
+						<include>menu_Button</include>
+						<onclick>Container.SetViewMode(54)</onclick>
+						<visible>[Container.Content(tvshows)] + !SubString(Container.FolderPath,plugin://plugin)</visible>
+					</control>
+					<!--RightList-->
+					<control type="button" id="411">
+						<label>$LOCALIZE[31128]</label>
+						<include>menu_Button</include>
+						<onclick>Container.SetViewMode(55)</onclick>
+						<visible>[Container.Content(movies) | Container.Content(tvshows)] + !SubString(Container.FolderPath,plugin://plugin)</visible>
+					</control>
+					<!--Simple-->
+					<control type="button" id="412">
+						<label>31129</label>
+						<include>menu_Button</include>
+						<onclick>Container.SetViewMode(56)</onclick>
+						<visible>[Container.Content(movies) | Container.Content(tvshows) | Container.Content(sets)] + !SubString(Container.FolderPath,plugin://plugin)</visible>
+					</control>
+					<!--posterwall-->
+					<control type="button" id="413">
+						<label>$LOCALIZE[31127]</label>
+						<include>menu_Button</include>
+						<onclick>Container.SetViewMode(58)</onclick>
+						<visible>Container.Content(movies) + !SubString(Container.FolderPath,plugin://plugin)</visible>
+					</control>
+				</control>
+			</control>
+		</control>
+	</include>
+	<!--MUSIC MENU-->
+	<include name="menu_Music">
+		<control type="group">
+			<include>menu_Commons</include>
+			<control type="grouplist" id="6000">
+				<include>menu_ContainerCommons</include>
+				<include>menu_ViewMode</include>
+				<!--options-->
+				<include>menu_Sorting</include>
+				<include>menu_LibraryHeader</include>
+				<include>menu_SwitchMode</include>
+				<include>menu_Shares</include>
+				<include>menu_Filter</include>
+				<include>menu_PartyMode</include>
+				<include>menu_Update</include>
+				<include>menu_Search</include>
+				<include>menu_Playing</include>
+			</control>
+		</control>
+		<!--viewtypes-->
+		<control type="group">
+			<control type="grouplist" id="4000">
+				<include>menu_SubContainerCommons</include>
+				<control type="label" id="401">
+					<label>$LOCALIZE[31100]</label>
+					<include>menu_Header</include>
+				</control>
+				<!--list-->
+				<control type="button" id="402">
+					<label>$LOCALIZE[535]</label>
+					<include>menu_Button</include>
+					<onclick>Container.SetViewMode(50)</onclick>
+				</control>
+				<!--thumbnails-->
+				<control type="button" id="404">
+					<label>$LOCALIZE[31113]</label>
+					<onclick>Container.SetViewMode(572)</onclick>
+					<include>menu_Button</include>
+					<visible>Container.Content(artists)</visible>
+				</control>
+				<!--thumbnails square-->
+				<control type="button" id="405">
+					<label>$LOCALIZE[31113]</label>
+					<onclick>Container.SetViewMode(572)</onclick>
+					<include>menu_Button</include>
+					<visible>Container.Content(albums) | Container.Content(songs) | Container.Content(singles)</visible>
+				</control>
+			</control>
+		</control>
+	</include>
+	<!--FILES MENU-->
+	<include name="menu_Files">
+		<control type="group">
+			<include>menu_Commons</include>
+			<control type="grouplist" id="6000">
+				<include>menu_ContainerCommons</include>
+				<include>menu_ViewMode</include>
+				<!--options-->
+				<include>menu_Sorting</include>
+				<!--slideshow-->
+				<control type="label" id="203">
+					<label>$LOCALIZE[33063]</label>
+					<include>menu_Header</include>
+					<visible>Window.IsActive(pictures)</visible>
+				</control>
+				<control type="button" id="204">
+					<label>$LOCALIZE[108]</label>
+					<onclick>SendClick(6)</onclick>
+					<include>menu_Button</include>
+					<visible>Window.IsActive(pictures)</visible>
+				</control>
+				<!--recursive slideshow-->
+				<control type="button" id="205">
+					<label>$LOCALIZE[361]</label>
+					<onclick>SendClick(7)</onclick>
+					<include>menu_Button</include>
+					<visible>Window.IsActive(pictures)</visible>
+				</control>
+				<!--randomize toggle-->
+				<control type="radiobutton" id="206">
+					<label>$LOCALIZE[13319]</label>
+					<onclick>SendClick(9)</onclick>
+					<include>menu_Button</include>
+					<include>menu_RadioButton</include>
+					<visible>Window.IsActive(pictures)</visible>
+				</control>
+				<include>menu_LibraryHeader</include>
+				<include>menu_SwitchMode</include>
+				<include>menu_Filter</include>
+				<include>menu_Search</include>
+				<include>menu_Playing</include>
+			</control>
+		</control>
+		<!--viewtypes-->
+		<control type="group">
+			<control type="grouplist" id="4000">
+				<include>menu_SubContainerCommons</include>
+				<control type="label" id="401">
+					<label>$LOCALIZE[31100]</label>
+					<include>menu_Header</include>
+				</control>
+				<!--list-->
+				<control type="button" id="402">
+					<label>$LOCALIZE[535]</label>
+					<textwidth>250</textwidth>
+					<include>menu_Button</include>
+					<onclick>Container.SetViewMode(50)</onclick>
+				</control>
+				<!--thumbnails-->
+				<control type="button" id="403">
+					<label>$LOCALIZE[31113]</label>
+					<textwidth>250</textwidth>
+					<include>menu_Button</include>
+					<onclick>Container.SetViewMode(572)</onclick>
+				</control>
+				<!--gallery-->
+				<control type="button" id="405">
+					<label>$LOCALIZE[31111]</label>
+					<textwidth>250</textwidth>
+					<include>menu_Button</include>
+					<onclick>Container.SetViewMode(53)</onclick>
+					<visible>Window.IsActive(Pictures) + Container().HasFiles + !IsEmpty(Container.FolderPath) + !substring(container.folderpath,addons://sources/)</visible>
+				</control>
+			</control>
+		</control>
+	</include>
+	<!--ADD-ONS MENU-->
+	<include name="menu_Addons">
+		<control type="group">
+			<include>menu_Commons</include>
+			<control type="grouplist" id="6000">
+				<include>menu_ContainerCommons</include>
+				<include>menu_ViewMode</include>
+				<!--options-->
+				<include>menu_Sorting</include>
+				<!--add-ons header-->
+				<control type="label" id="203">
+					<label>$LOCALIZE[24001]</label>
+					<include>menu_Header</include>
+				</control>
+				<!--auto-updates-->
+				<control type="radiobutton" id="5">
+					<label>$LOCALIZE[24063]</label>
+					<include>menu_Button</include>
+					<include>menu_RadioButton</include>
+				</control>
+				<!--notifications-->
+				<control type="radiobutton" id="6">
+					<label>$LOCALIZE[25000]</label>
+					<include>menu_Button</include>
+					<include>menu_RadioButton</include>
+				</control>
+				<!--hide foreign-->
+				<control type="radiobutton" id="7">
+					<label>$LOCALIZE[25001]</label>
+					<include>menu_Button</include>
+					<include>menu_RadioButton</include>
+				</control>
+				<include>menu_LibraryHeader</include>
+				<include>menu_Search</include>
+				<include>menu_Playing</include>
+			</control>
+			<!--viewtypes-->
+			<control type="group">
+				<control type="grouplist" id="4000">
+					<include>menu_SubContainerCommons</include>
+					<control type="label" id="401">
+						<label>$LOCALIZE[31100]</label>
+						<include>menu_Header</include>
+					</control>
+					<!--list-->
+					<control type="button" id="402">
+						<label>$LOCALIZE[535]</label>
+						<textwidth>250</textwidth>
+						<include>menu_Button</include>
+						<onclick>Container.SetViewMode(50)</onclick>
+					</control>
+					<!--thumbnails square-->
+					<control type="button" id="409">
+						<label>$LOCALIZE[31113]</label>
+						<include>menu_Button</include>
+						<onclick>Container.SetViewMode(574)</onclick>
+					</control>
+				</control>
+			</control>
+		</control>
+	</include>
+	<!--PLAYLIST MENU-->
+	<include name="menu_Playlist">
+		<control type="group">
+			<include>menu_Commons</include>
+			<control type="grouplist" id="6000">
+				<include>menu_ContainerCommons</include>
+				<!--playlist header-->
+				<control type="label" id="19">
+					<label>$LOCALIZE[559]</label>
+					<include>menu_Header</include>
+				</control>
+				<!--shuffle-->
+				<control type="radiobutton" id="20">
+					<label>$LOCALIZE[191]</label>
+					<include>menu_Button</include>
+					<include>menu_RadioButton</include>
+				</control>
+				<!--repeat-->
+				<control type="button" id="26">
+					<label>$LOCALIZE[486]</label>
+					<include>menu_Button</include>
+				</control>
+				<!--save-->
+				<control type="button" id="21">
+					<label>$LOCALIZE[190]</label>
+					<include>menu_Button</include>
+				</control>
+				<!--clear-->
+				<control type="button" id="22">
+					<label>$LOCALIZE[192]</label>
+					<include>menu_Button</include>
+					<onclick>back</onclick>
+				</control>
+				<include>menu_LibraryHeader</include>
+				<include>menu_Search</include>
+				<include>menu_Playing</include>
+			</control>
+		</control>
+	</include>
+	<!--SETTINGS MENU-->
+	<include name="menu_Settings">
+		<control type="group">
+			<include>menu_Commons</include>
+			<control type="grouplist" id="6000">
+				<include>menu_ContainerCommons</include>
+				<!--Settings level-->
+				<control type="label" id="19">
+					<label>$LOCALIZE[31205]</label>
+					<include>menu_Header</include>
+				</control>
+				<control type="button" id="20">
+					<onback>PreviousMenu</onback>
+					<label>$LOCALIZE[10037]</label>
+					<onclick>SettingsLevelChange</onclick>
+					<include>menu_Button</include>
+				</control>
+				<!--now playing-->
+				<include>menu_Playing</include>
+			</control>
+		</control>
+	</include>
+	<!--WEATHER-->
+	<include name="menu_Weather">
+		<control type="group">
+			<include>menu_Commons</include>
+			<control type="grouplist" id="6000">
+				<include>menu_ContainerCommons</include>
+				<!--weather functions-->
+				<control type="label" id="203">
+					<label>$LOCALIZE[8]</label>
+					<include>menu_Header</include>
+				</control>
+				<!--location-->
+				<control type="group" id="300">
+					<height>46</height>
+					<onright>50</onright>
+					<control type="spincontrolex" id="3">
+						<label>-</label>
+						<font>-</font>
+						<onup>218</onup>
+						<ondown>2</ondown>
+						<onright>50</onright>
+						<textureup colordiffuse="base2_ff">dialogs/spin/spin-up.png</textureup>
+						<textureupfocus colordiffuse="Color1">dialogs/spin/spin-up.png</textureupfocus>
+						<texturedown colordiffuse="base2_ff">dialogs/spin/spin-down.png</texturedown>
+						<texturedownfocus colordiffuse="Color1">dialogs/spin/spin-down.png</texturedownfocus>
+						<include>menu_Button</include>
+					</control>
+					<control type="label" id="301">
+						<label>$LOCALIZE[35500]</label>
+						<include>menu_Button</include>
+					</control>
+				</control>
+				<!--refresh-->
+				<control type="button" id="2">
+					<label>$LOCALIZE[103]</label>
+					<onright>50</onright>
+					<include>menu_Button</include>
+				</control>
+				<!--weather settings-->
+				<control type="label" id="204">
+					<label>$LOCALIZE[33063]</label>
+					<include>menu_Header</include>
+				</control>
+				<!--settings-->
+				<control type="button" id="4">
+					<label>$LOCALIZE[5]</label>
+					<onclick>ActivateWindow(MyWeatherSettings)</onclick>
+					<include>menu_Button</include>
+				</control>
+				<!--commons-->
+				<include>menu_Playing</include>
+			</control>
+		</control>
+	</include>
+</includes>

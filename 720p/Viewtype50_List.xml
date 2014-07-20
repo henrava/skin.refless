@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<include name="Viewtype50_List">
+		<control type="group">
+			<visible>Control.IsVisible(50)</visible>
+			<!-- List -->
+			<control type="List" id="50">
+				<viewtype label="535">list</viewtype>
+				<left>10</left>
+				<top>90</top>
+				<width>680</width>
+				<height>612</height>
+				<onup>50</onup>
+				<ondown>50</ondown>
+				<onleft>6000</onleft>
+				<onright condition="!Window.IsActive(videoplaylist) | [Window.IsActive(videoplaylist) + !Player.HasVideo]">70</onright>
+				<onright condition="Window.IsActive(videoplaylist) + Player.HasVideo">99</onright>
+				<pagecontrol>70</pagecontrol>
+				<preloaditems>2</preloaditems>
+				<orientation>vertical</orientation>
+				<include>toggle_Menu</include>
+				<include>global_ListScroll</include>
+				<include>transition_Info</include>
+				<include>transition_Content</include>
+				<!-- List for files without info-->
+				<itemlayout condition="IsEmpty(Container.FolderPath)" width="680" height="40">
+					<control type="label">
+						<left>10</left>
+						<width>600</width>
+						<label>$INFO[ListItem.Label]</label>
+						<include>container_Single</include>
+					</control>
+				</itemlayout>
+				<focusedlayout condition="IsEmpty(Container.FolderPath)" width="680" height="40">
+					<visible>![ControlGroup(6000).HasFocus | ControlGroup(4000).HasFocus]</visible>
+					<control type="image">
+						<width>680</width>
+						<height>40</height>
+						<texture>views/focus.png</texture>
+					</control>
+					<control type="label">
+						<left>10</left>
+						<width>600</width>
+						<label>$INFO[ListItem.Label]</label>
+						<include>container_Single-focus</include>
+					</control>
+				</focusedlayout>
+				<itemlayout condition="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(artists) | Container.Content(albums) | Container.Content(songs) | SubString(Container.FolderPath,playlistvideo://) | [[Container.Content(files) | Container.Content(addons) | Window.IsActive(pictures)] + Container.HasFiles]" width="680" height="67">
+					<control type="label">
+						<left>10</left>
+						<width>600</width>
+						<label>$VAR[global_Title]</label>
+						<include>container_Title</include>
+					</control>
+					<control type="label">
+						<left>10</left>
+						<top>30</top>
+						<width>600</width>
+						<label>$VAR[global_Info]</label>
+						<include>container_Sub</include>
+					</control>
+					<control type="image">
+						<top>3</top>
+						<left>640</left>
+						<width>40</width>
+						<height>40</height>
+						<texture colordiffuse="Color2">$VAR[status_Overlay]</texture>
+					</control>
+				</itemlayout>
+				<focusedlayout condition="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(artists) | Container.Content(albums) | Container.Content(songs) | SubString(Container.FolderPath,playlistvideo://) | [[Container.Content(files) | Container.Content(addons) | Window.IsActive(pictures)] + Container.HasFiles]" width="620" height="67">
+					<control type="group">
+						<control type="image">
+							<width>680</width>
+							<height>70</height>
+							<texture>views/focus.png</texture>
+						</control>
+						<control type="label">
+							<left>10</left>
+							<width>600</width>
+							<label>$VAR[global_Title]</label>
+							<include>container_Title-focus</include>
+						</control>
+						<control type="label">
+							<left>10</left>
+							<top>30</top>
+							<width>600</width>
+							<label>$VAR[global_Info]</label>
+							<include>container_Sub-focus</include>
+						</control>
+						<control type="image">
+							<top>3</top>
+							<left>640</left>
+							<width>40</width>
+							<height>40</height>
+							<texture colordiffuse="Color5">$VAR[status_Overlay]</texture>
+						</control>
+					</control>
+				</focusedlayout>
+			</control>
+		</control>
+	</include>
+	<include name="detail_ListMusic">
+		<control type="group">
+			<left>830</left>
+			<top>90</top>
+			<include>toggle_Menu</include>
+			<include>transition_Info</include>
+			<include>transition_Content</include>
+			<include>fadeinout</include>
+			<visible>Control.IsVisible(50)</visible>
+			<control type="group">
+				<visible>Container.Content(albums) | Container.Content(songs) | Window.IsActive(MusicFiles) | Container.Content(artists)</visible>
+				<control type="image">
+					<width>400</width>
+					<height>400</height>
+					<texture background="true">$INFO[ListItem.Art(thumb)]</texture>
+					<bordertexture border="5">frames/frame-nf.png</bordertexture>
+					<bordersize>5</bordersize>
+					<include>fadeinout</include>
+					<aspectratio align="center" aligny="top">keep</aspectratio>
+					<fadetime>fadetime_Thumb</fadetime>
+					<visible>!SubString(Container.FolderPath,plugin://)</visible>
+				</control>
+			</control>
+		</control>
+	</include>
+	<include name="detail_ListAddons">
+		<control type="group">
+			<left>700</left>
+			<top>90</top>
+			<include>toggle_Menu</include>
+			<include>transition_Info</include>
+			<include>transition_Content</include>
+			<visible>Control.IsVisible(50) + ![IsEmpty(Container.FolderPath) | StringCompare(Container.FolderPath,addons://enabled/) | StringCompare(Container.FolderPath,addons://all/)] + [StringCompare(Container.FolderPath,addons://outdated/) | StringCompare(Container.FolderPath,addons://disabled/) | SubString(Container.FolderPath,addons://enabled/) | StringCompare(Container.FolderPath,addons://repos/) | SubString(Container.FolderPath,addons://all/) | Container.Content(addons) | Container.Content(files) + SubString(Container.FolderPath,plugin://plugin.)]</visible>
+			<control type="image">
+				<width>532</width>
+				<height>256</height>
+				<texture background="true">$INFO[ListItem.Art(thumb)]</texture>
+				<bordertexture border="7">frames/frame-nf.png</bordertexture>
+				<bordersize>7</bordersize>
+				<aspectratio align="left" aligny="top">keep</aspectratio>
+				<fadetime>fadetime_Thumb</fadetime>
+			</control>
+			<control type="grouplist" id="1000">
+				<left>7</left>
+				<top>268</top>
+				<itemgap>0</itemgap>
+				<visible>Control.IsVisible(50) + [Container.Content(addons) | SubString(Container.FolderPath,plugin://)]</visible>
+				<control type="label">
+					<width>532</width>
+					<label>$VAR[global_Info]</label>
+					<include>detail_Sub</include>
+				</control>
+				<control type="textbox" id="1003">
+					<width>532</width>
+					<height>330</height>
+					<label>$VAR[global_Plot]</label>
+					<autoscroll>!Window.IsActive(addoninformation)</autoscroll>
+					<include>detail_Text</include>
+				</control>
+			</control>
+		</control>
+	</include>
+	<!--MUSIC PLAYLIST VIEW-->
+	<include name="view_Playlist-Commons">
+		<control type="group">
+			<control type="image">
+				<width>403</width>
+				<height>42</height>
+				<texture>views/column-fo.png</texture>
+				<colordiffuse>Color6</colordiffuse>
+			</control>
+			<control type="image">
+				<left>405</left>
+				<width>298</width>
+				<height>42</height>
+				<texture>views/column-fo.png</texture>
+				<colordiffuse>Color6</colordiffuse>
+			</control>
+			<control type="image">
+				<left>705</left>
+				<width>398</width>
+				<height>42</height>
+				<texture>views/column-fo.png</texture>
+				<colordiffuse>Color6</colordiffuse>
+			</control>
+			<control type="image">
+				<left>1105</left>
+				<width>115</width>
+				<height>42</height>
+				<texture>views/column-fo.png</texture>
+				<colordiffuse>Color6</colordiffuse>
+			</control>
+		</control>
+	</include>
+	<include name="view_Playlist">
+		<control type="group">
+			<left>35</left>
+			<top>110</top>
+			<include>transition_Content</include>
+			<include>transition_Info</include>
+			<include>toggle_Menu</include>
+			<control type="group">
+				<left>5</left>
+				<control type="label">
+					<label>$LOCALIZE[369]</label>
+					<width>595</width>
+					<include>column_Header</include>
+				</control>
+				<control type="label">
+					<left>405</left>
+					<label>$LOCALIZE[557]</label>
+					<width>595</width>
+					<include>column_Header</include>
+				</control>
+				<control type="label">
+					<left>705</left>
+					<label>$LOCALIZE[558]</label>
+					<width>595</width>
+					<include>column_Header</include>
+				</control>
+				<control type="label">
+					<left>1105</left>
+					<label>$LOCALIZE[180]</label>
+					<width>595</width>
+					<include>column_Header</include>
+				</control>
+			</control>
+			<control type="list" id="50">
+				<viewtype label="535">list</viewtype>
+				<top>35</top>
+				<width>1200</width>
+				<height>528</height>
+				<onup>50</onup>
+				<ondown>50</ondown>
+				<onleft>6000</onleft>
+				<onright>70</onright>
+				<pagecontrol>70</pagecontrol>
+				<include>global_ListScroll</include>
+				<orientation>vertical</orientation>
+				<visible>Window.IsActive(musicplaylist)</visible>
+				<itemlayout width="1200" height="44">
+					<include>view_Playlist-Commons</include>
+					<control type="group">
+						<left>5</left>
+						<control type="label">
+							<width>390</width>
+							<label>$INFO[ListItem.Title]</label>
+							<include>column_CommonListItem</include>
+						</control>
+						<control type="label">
+							<left>405</left>
+							<width>290</width>
+							<label>$INFO[ListItem.Artist]</label>
+							<textcolor>Color2</textcolor>
+							<include>column_CommonListItem</include>
+						</control>
+						<control type="label">
+							<left>705</left>
+							<width>390</width>
+							<label>$INFO[ListItem.Album]</label>
+							<textcolor>Color3</textcolor>
+							<include>column_CommonListItem</include>
+						</control>
+						<control type="label">
+							<left>1105</left>
+							<width>60</width>
+							<label>$INFO[ListItem.Duration]</label>
+							<textcolor>Color3</textcolor>
+							<include>column_CommonListItem</include>
+						</control>
+					</control>
+				</itemlayout>
+				<focusedlayout width="1440" height="44">
+					<control type="group">
+						<include>view_Playlist-Commons</include>
+						<control type="image">
+							<width>1200</width>
+							<height>42</height>
+							<texture>views/column-fo.png</texture>
+							<colordiffuse>Color1</colordiffuse>
+						</control>
+						<control type="group">
+							<left>5</left>
+							<control type="label">
+								<width>390</width>
+								<label>$INFO[ListItem.Title]</label>
+								<include>column_CommonListItem-focus</include>
+							</control>
+							<control type="label">
+								<left>405</left>
+								<width>290</width>
+								<label>$INFO[ListItem.Artist]</label>
+								<include>column_CommonListItem-focus</include>
+							</control>
+							<control type="label">
+								<left>705</left>
+								<width>390</width>
+								<label>$INFO[ListItem.Album]</label>
+								<include>column_CommonListItem-focus</include>
+							</control>
+							<control type="label">
+								<left>1105</left>
+								<width>60</width>
+								<label>$INFO[ListItem.Duration]</label>
+								<include>column_CommonListItem-focus</include>
+							</control>
+						</control>
+					</control>
+				</focusedlayout>
+			</control>
+		</control>
+	</include>
+</includes>

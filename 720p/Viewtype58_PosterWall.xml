@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<!-- VIEW ID 58 - Movies Only - POSTERSWALL -->
+	<include name="Viewtype58_PosterWall">
+		<control type="group">
+			<include>global_Scrolltime</include>
+			<include>transition_Content</include>
+			<include>transition_Info</include>
+			<include>toggle_Menu</include>
+			<visible>Control.IsVisible(58)</visible>
+			<control type="panel" id="58">
+				<viewtype label="PosterWall">panel</viewtype>
+				<posx>60</posx>
+				<posy>100</posy>
+				<width>1180</width>
+				<height>570</height>
+				<onleft>6000</onleft>
+				<onright>70</onright>
+				<onup>58</onup>
+				<ondown>58</ondown>
+				<pagecontrol>70</pagecontrol>
+				<preloaditems>4</preloaditems>
+				<scrolltime tween="Cubic" easing="Out">400</scrolltime>
+				<orientation>vertical</orientation>
+				<visible>[Container.Content(movies)] + ![Container.Content(files) + Container.HasFiles + !SubString(Container.FolderPath,plugin://plugin)]</visible>
+				<itemlayout height="190" width="140">
+					<control type="image">
+						<width>140</width>
+						<height>190</height>
+						<texture background="true" fallback="thumbs/default_Portrait.png">$VAR[thumb_Portrait]</texture>
+						<aspectratio>scale</aspectratio>
+						<bordertexture border="2">views/thumb_nofocus.png</bordertexture>
+						<bordersize>2</bordersize>
+						<colordiffuse>BAffffff</colordiffuse>
+					</control>
+				</itemlayout>
+				<focusedlayout height="190" width="140">
+					<control type="image">
+						<width>140</width>
+						<height>190</height>
+						<texture background="true" fallback="thumbs/default_Portrait.png">$VAR[thumb_Portrait]</texture>
+						<aspectratio>stretch</aspectratio>
+						<bordertexture colordiffuse="Color8" border="5">views/focus.png</bordertexture>
+						<bordersize>5</bordersize>
+						<animation effect="zoom" start="100" end="140" center="auto" time="150">Focus</animation>
+						<animation effect="slide" start="0,0" end="21,0" time="0" condition="Container.Column(0)">Conditional</animation>
+						<animation effect="slide" start="0,0" end="0,28" time="0" condition="Container.Row(0)">Conditional</animation>
+						<animation effect="slide" start="0,0" end="-21,0" time="0" condition="Container.Column(7)">Conditional</animation>
+						<animation effect="slide" start="0,0" end="0,-28" time="0" condition="Container.Row(2)">Conditional</animation>
+					</control>
+				</focusedlayout>
+			</control>
+			<!--Bottom Movie info-->
+			<control type="group">
+				<visible>Control.IsVisible(58)</visible>
+				<posx>60</posx>
+				<posy>680</posy>
+				<control type="label">
+					<width>800</width>
+					<label>$INFO[ListItem.Title]$INFO[ListItem.Year, • ]</label>
+					<align>left</align>
+					<font>semibold_22-U</font>
+					<textcolor>Color8</textcolor>
+					<include>detail_Title</include>
+					<visible>!IsEmpty(ListItem.Year)</visible>
+				</control>
+			</control>
+		</control>
+	</include>
+</includes>

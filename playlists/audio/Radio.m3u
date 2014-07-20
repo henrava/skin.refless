@@ -1,0 +1,16 @@
+#EXTM3U Radio
+
+#EXTINF:-1, Radio 105 TV
+rtmp://fms.105.net:1935/live/105Test1
+
+#EXTINF:-1, M20 TV
+rtmp://cp236610.live.edgefcs.net:1935/live/M2OTVLiveFlash@119823
+
+#EXTINF:-1, Virgin radio TV
+rtmp://fms.105.net:1935/live/virgin1 
+
+#EXTINF:-1, Radio Italia TV
+rtmp://cwedge.cdcache.net:1935/cwedge/rilive
+
+#EXTINF:-1, Montecarlo TV
+rtmp://fms.105.net:1935/live/rmc1

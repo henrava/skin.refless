@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol always="true">9000</defaultcontrol>
+	<allowoverlay>no</allowoverlay>
+	<onload>CancelAlarm(StartupCheck,true)</onload>
+	<onload>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=9100)</onload>
+	<controls>
+		<control type="group">
+			<include>transition_Home</include>
+			<!-- HOME BACKGROUND -->
+			<control type="group">
+				<visible>[![Player.HasVideo + Skin.HasSetting(home.nowplaying)] | IsEmpty(Skin.String(HomeBackground))]</visible>
+				<control type="image">
+					<texture background="true" fallback="special://skin/backgrounds/fallback.jpg">$VAR[home_Background]</texture>
+					<include>home_Slideshow</include>
+					<visible>[Skin.String(HomeBackground,single) | Skin.String(HomeBackground,fanart) | IsEmpty(Skin.String(HomeBackground))]</visible>
+				</control>
+				<control type="multiimage" id="1">
+					<imagepath fallback="special://skin/backgrounds/">$VAR[home_Background]</imagepath>
+					<include>home_Slideshow</include>
+					<visible>Skin.String(HomeBackground,multi) | [Player.HasAudio + Skin.HasSetting(home.nowplaying)]</visible>
+				</control>
+				<control type="image">
+					<texture>greytrans.png</texture>
+					<include>screen_Dimensions</include>
+					<aspectratio>stretch</aspectratio>
+					<include>fadeinout</include>
+					<visible>Player.HasMedia + Skin.HasSetting(home.nowplaying)</visible>
+				</control>
+			</control>
+			<!--fanart slideshow info-->
+			<control type="group">
+				<animation effect="slide" start="0,0" end="0,-20" time="0" condition="System.GetBool(lookandfeel.enablerssfeeds)">Conditional</animation>
+				<visible>Skin.String(HomeBackground,fanart) + ![Player.HasMedia + Skin.HasSetting(home.nowplaying)]</visible>
+				<control type="label">
+					<right>10</right>
+					<bottom>5</bottom>
+					<width>400</width>
+					<label>$VAR[home_SlideshowInfo]</label>
+					<font>condensed_20-U</font>
+					<textcolor>Color8</textcolor>
+					<shadowcolor>Color5</shadowcolor>
+					<align>right</align>
+					<visible>Skin.String(fanartinfo.text,true)</visible>
+				</control>
+			</control>
+			<!--now playing video-->
+			<control type="group">
+				<visible>Player.HasVideo + Skin.HasSetting(home.nowplaying)</visible>
+				<control type="videowindow">
+					<include>screen_Dimensions</include>
+					<include>fadeinout</include>
+				</control>
+			</control>
+
+			<!--MENU-->
+			<include condition="StringCompare(Skin.String(homemenu.type),vertical) | !StringCompare(Skin.String(homemenu.type),horizontal) + !StringCompare(Skin.String(homemenu.type),vertical)">HomeMenuVertical</include>
+			<include condition="StringCompare(Skin.String(homemenu.type),horizontal)">HomeMenuHorizontal</include>
+
+			<!--WIDGETS-->
+<!-- not ready
+			<include>HomeWidgetsContainer</include>
+			<include>HomeWidgetsPanel</include>
+-->
+			<!--HOME NOWPLAYING AUDIO -->
+			<control type="group">
+			<animation type="Conditional" condition="StringCompare(Skin.String(homemenu.type),vertical)">
+				<effect type="Slide" time="0" start="0,0" end="300,140" easing="In" tween="Quadratic"/>
+			</animation>
+				<left>0</left>
+				<top>355</top>
+				<visible>Player.HasAudio + Skin.HasSetting(home.nowplaying)</visible>
+				<control type="image">
+					<posx>0</posx>
+					<posy>0</posy>
+					<width>1280</width>
+					<height>200</height>
+					<texture colordiffuse="base3_80">white.png</texture>
+				</control>
+				<control type="image">
+					<description>Disc rotate image</description>
+					<left>64</left>
+					<top>4</top>
+					<width>192</width>
+					<height>192</height>
+					<texture>player/defaultCD.png</texture>
+					<aspectratio>keep</aspectratio>
+					<animation effect="rotate" loop="true" end="-360" center="auto" time="2500" reversible="false" condition="Player.HasAudio + Player.Playing">Conditional</animation>
+				</control>
+				<control type="image">
+					<description>Album Thumb</description>
+					<left>4</left>
+					<top>4</top>
+					<width>192</width>
+					<height>192</height>
+					<texture>$INFO[MusicPlayer.Cover]</texture>
+					<aspectratio>stretch</aspectratio>
+				</control>
+				<control type="group">
+					<left>270</left>
+					<control type="image">
+						<top>5</top>
+						<width>32</width>
+						<height>32</height>
+						<texture>toast/play.png</texture>
+						<colordiffuse>darkorange</colordiffuse>
+					</control>
+					<control type="label">
+						<top>5</top>
+						<left>40</left>
+						<width>1000</width>
+						<label>$INFO[MusicPlayer.Title]</label>
+						<font>regular_30</font>
+						<textcolor>Color1</textcolor>
+					</control>
+					<control type="label">
+						<top>45</top>
+						<width>1000</width>
+						<label>$INFO[MusicPlayer.Artist]</label>
+						<font>semibold_20-U</font>
+						<textcolor>Color2</textcolor>
+					</control>
+					<control type="textbox">
+						<top>75</top>
+						<width>1000</width>
+						<height>80</height>
+						<label>$INFO[MusicPlayer.Album][CR]$INFO[MusicPlayer.Offset(1).Artist,[B]$LOCALIZE[209]: [/B]]$INFO[MusicPlayer.Offset(1).Title, - ] ($INFO[MusicPlayer.PlaylistPosition,]$INFO[MusicPlayer.PlaylistLength,/])</label>
+						<textcolor>Color3</textcolor>
+					</control>
+					<control type="label">
+						<description>time label</description>
+						<top>165</top>
+						<width>300</width>
+						<label>$INFO[Player.Time]$INFO[Player.Duration,[COLOR=Color2] / [/COLOR]]</label>
+						<textcolor>Color3</textcolor>
+					</control>
+				</control>
+			</control>
+			<!-- HOME TIME AND WEATHER  -->
+			<control type="group">
+				<visible>Skin.HasSetting(home.weather)</visible>
+				<control type="image">
+					<description>Weather image</description>
+					<posx>20</posx>
+					<posy>0</posy>
+					<width>48</width>
+					<height>48</height>
+					<aspectratio>keep</aspectratio>
+					<texture>$INFO[Weather.Conditions]</texture>
+				</control>
+				<control type="label">
+					<description>Temp label</description>
+					<posx>20</posx>
+					<posy>40</posy>
+					<width>80</width>
+					<font>regular_20</font>
+					<align>left</align>
+					<aligny>center</aligny>
+					<textcolor>Color2</textcolor>
+					<shadowcolor>Color5</shadowcolor>
+					<label>$INFO[Window(Weather).Property(Current.Temperature)]$INFO[System.TemperatureUnits]</label>
+				</control>
+			</control>
+			<control type="group">
+				<include>global_Clock</include>
+				<control type="image">
+					<texture>toast/play.png</texture>
+					<include>toast_Icon</include>
+					<visible>[Player.HasAudio | Player.HasVideo]+ [!Player.Muted + IntegerGreaterThan(Player.Volume,0)]</visible>
+				</control>
+			</control>
+			<!--RSS-->
+			<control type="group">
+				<left>0</left>
+				<top>681</top>
+				<visible>System.GetBool(lookandfeel.enablerssfeeds) + ![Player.HasVideo + Skin.HasSetting(home.nowplaying)]</visible>
+				<control type="image">
+					<width>910</width>
+					<height>40</height>
+					<texture>greytrans.png</texture>
+				</control>
+				<control type="rss">
+					<left>10</left>
+					<top>10</top>
+					<width>900</width>
+					<aligny>center</aligny>
+					<font>condensed_20-U</font>
+					<urlset>1</urlset>
+					<textcolor>Color1</textcolor>
+					<titlecolor>Color2</titlecolor>
+					<headlinecolor>Color1</headlinecolor>
+					<highlightcolor>Focused</highlightcolor>
+					<include>fadeinout</include>
+				</control>
+			</control>
+		</control>
+	</controls>
+</window>

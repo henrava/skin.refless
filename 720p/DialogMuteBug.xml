@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol>-</defaultcontrol>
+	<controls>
+		<control type="image">
+			<texture>toast/mute.png</texture>
+			<include>toast_Icon</include>
+			<visible>!Window.IsActive(infodialog)</visible>
+		</control>
+	</controls>
+</window>

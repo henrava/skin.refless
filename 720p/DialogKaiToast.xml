@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<include>transition_Dialog</include>
+	<coordinates>
+		<system>1</system>
+		<left>400</left>
+		<top>5</top>
+	</coordinates>
+	<zorder>1</zorder>
+	<controls>
+		<control type="group">
+			<visible>![Window.IsActive(startup) | Window.IsActive(movieinformation) | Window.IsActive(musicinformation)]</visible>
+			<control type="image">
+				<description>background window</description>
+				<width>480</width>
+				<height>80</height>
+				<texture colordiffuse="white_cc">white.png</texture>
+				<!--	<include>dialog_Window</include>
+
+				<include>dialog_Text</include>
+-->
+			</control>
+			<control type="fadelabel" id="401">
+				<description>Line 1 Label</description>
+				<left>75</left>
+				<top>10</top>
+				<width>380</width>
+				<scrollout>false</scrollout>
+				<pauseatend>2000</pauseatend>
+				<font>condensed_20-U</font>
+				<textcolor>Color5</textcolor>
+			</control>
+			<control type="fadelabel" id="402">
+				<description>Line 2 Label</description>
+				<left>75</left>
+				<top>40</top>
+				<width>380</width>
+				<scrollout>false</scrollout>
+				<pauseatend>2000</pauseatend>
+				<font>condensed_20-U</font>
+				<textcolor>Color5</textcolor>
+			</control>
+			<!--default-->
+			<control type="image" id="400">
+				<description>default toast icon</description>
+				<left>5</left>
+				<top>8</top>
+				<width>64</width>
+				<height>64</height>
+				<texture>toast/info.png</texture>
+			</control>
+			<!--info-->
+			<control type="image" id="403">
+				<description>info toast icon</description>
+				<left>5</left>
+				<top>8</top>
+				<width>64</width>
+				<height>64</height>
+				<texture>toast/info.png</texture>
+				<visible>false</visible>
+			</control>
+			<!--warning-->
+			<control type="image" id="404">
+				<description>warning toast icon</description>
+				<left>5</left>
+				<top>8</top>
+				<width>64</width>
+				<height>64</height>
+				<texture>toast/warning.png</texture>
+				<visible>false</visible>
+			</control>
+			<!--error-->
+			<control type="image" id="405">
+				<description>error toast icon</description>
+				<left>5</left>
+				<top>8</top>
+				<width>64</width>
+				<height>64</height>
+				<texture>toast/error.png</texture>
+				<visible>false</visible>
+			</control>
+		</control>
+	</controls>
+</window>

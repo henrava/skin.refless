@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol>1</defaultcontrol>
+	<coordinates>
+		<system>1</system>
+		<left>490</left>
+		<top>5</top>
+	</coordinates>
+	<include>fadeinout</include>
+	<controls>
+		<control type="group">
+			<control type="image">
+				<width>320</width>
+				<height>60</height>
+				<texture colordiffuse="base1_80">white.png</texture>
+<!--
+				<include>dialog_Window</include>
+-->
+			</control>
+			<control type="slider" id="404">
+				<left>70</left>
+				<top>14</top>
+				<width>235</width>
+				<height>32</height>
+				<texturesliderbar colordiffuse="Color1">dialogs/slider/bar.png</texturesliderbar>
+				<textureslidernib colordiffuse="Color8">dialogs/slider/nib-nf.png</textureslidernib>
+				<textureslidernibfocus>dialogs/slider/nib-fo.png</textureslidernibfocus>
+				<info>Player.Volume</info>
+			</control>
+			<control type="label">
+				<width>320</width>
+				<top>15</top>
+				<left>10</left>
+				<align>left</align>
+				<textcolor>Color8</textcolor>
+				<font>light_30</font>
+				<label>$INFO[Control.GetLabel(404)]</label>
+			</control>
+		</control>
+	</controls>
+</window>

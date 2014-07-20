@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog">
+	<defaultcontrol always="true">500</defaultcontrol>
+	<coordinates>
+		<system>1</system>
+		<left>0</left>
+		<top>0</top>
+	</coordinates>
+	<controls>
+		<control type="image">
+			<include>screen_Dimensions</include>
+			<texture background="true">greytrans.png</texture>
+			<include>fadeinout</include>
+		</control>
+		<control type="grouplist" id="500">
+			<left>460</left>
+			<top>0</top>
+			<width>356</width>
+			<height>720</height>
+			<onup>500</onup>
+			<ondown>500</ondown>
+			<itemgap>0</itemgap>
+			<align>center</align>
+			<include>global_ListScroll</include>
+			<include>transition_Dialog</include>
+			<!--exit-->
+			<control type="button" id="501">
+				<onclick>Dialog.Close(shutdownmenu)</onclick>
+				<onclick>XBMC.Quit()</onclick>
+				<include>dialog_ShutdownButton</include>
+				<label>$LOCALIZE[13012]</label>
+				<visible>System.ShowExitButton</visible>
+			</control>
+			<!--shutdown-->
+			<control type="button" id="502">
+				<onclick>Dialog.Close(shutdownmenu)</onclick>
+				<onclick>XBMC.Powerdown()</onclick>
+				<include>dialog_ShutdownButton</include>
+				<label>$LOCALIZE[13016]</label>
+				<visible>System.CanPowerDown</visible>
+			</control>
+			<!--shutdown timer-->
+			<control type="button" id="503">
+				<onclick>Dialog.Close(shutdownmenu)</onclick>
+				<onclick>XBMC.AlarmClock(shutdowntimer,XBMC.Shutdown())</onclick>
+				<include>dialog_ShutdownButton</include>
+				<label>$LOCALIZE[19040]</label>
+				<visible>!System.HasAlarm(shutdowntimer)</visible>
+				<visible>System.CanPowerDown | System.CanSuspend | System.CanHibernate</visible>
+			</control>
+			<!--cancel shutdown timer-->
+			<control type="button" id="504">
+				<onclick>XBMC.CancelAlarm(shutdowntimer)</onclick>
+				<include>dialog_ShutdownButton</include>
+				<label>$LOCALIZE[20151]</label>
+				<visible>System.HasAlarm(shutdowntimer)</visible>
+			</control>
+			<!--suspend-->
+			<control type="button" id="507">
+				<onclick>Dialog.Close(shutdownmenu)</onclick>
+				<onclick>XBMC.Suspend()</onclick>
+				<include>dialog_ShutdownButton</include>
+				<label>$LOCALIZE[13011]</label>
+				<visible>System.CanSuspend</visible>
+			</control>
+			<!--hibernate-->
+			<control type="button" id="508">
+				<onclick>Dialog.Close(shutdownmenu)</onclick>
+				<onclick>XBMC.Hibernate()</onclick>
+				<include>dialog_ShutdownButton</include>
+				<label>$LOCALIZE[13010]</label>
+				<visible>System.CanHibernate</visible>
+			</control>
+			<!--logoff-->
+			<control type="button" id="510">
+				<onclick>Dialog.Close(all,true)</onclick>
+				<onclick>System.LogOff</onclick>
+				<include>dialog_ShutdownButton</include>
+				<label>$LOCALIZE[20126] $INFO[System.Profilename]</label>
+				<visible>System.HasLoginScreen | IntegerGreaterThan(System.ProfileCount,1)</visible>
+				<visible>System.Loggedon</visible>
+			</control>
+			<!--master mode-->
+			<control type="togglebutton" id="511">
+				<usealttexture>!System.IsMaster</usealttexture>
+				<onclick>XBMC.Mastermode</onclick>
+				<include>dialog_ShutdownButton</include>
+				<label>$LOCALIZE[20046]</label>
+				<altlabel>$LOCALIZE[20045]</altlabel>
+				<visible>System.HasLocks</visible>
+			</control>
+			<control type="button" id="512">
+				<onclick>dialog.close(all,true)</onclick>
+				<onclick>ActivateWindow(Settings)</onclick>
+				<include>dialog_ShutdownButton</include>
+				<label>$LOCALIZE[5]</label>
+			</control>
+		</control>
+	</controls>
+</window>

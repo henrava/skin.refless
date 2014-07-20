@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<colors>
+<!--main colors-->
+	<color name="base1_ff">ff004b6e</color><!--main background color-diffuse for backgrounds-blue1-->
+	<color name="base1_e6">e6004b6e</color><!--main background color-diffuse for backgrounds-blue1-transparency 90%-->
+	<color name="base1_cc">cc004b6e</color><!--main background color-diffuse for backgrounds-blue1-transparency 80%-->
+	<color name="base1_80">80004b6e</color><!--main background color-diffuse for backgrounds-blue1-transparency 50%-->
+	<color name="base1_40">40114076</color><!--main background color-diffuse for backgrounds-blue1-transparency 25%-->
+	<color name="base1_00">00114076</color><!--main background color-diffuse for backgrounds-blue1-transparency 0%-->
+	<color name="base2_ff">ff004160</color><!--primary overlay-menu home color-blue 2-->
+	<color name="base2_cc">cc004160</color><!--primary overlay-menu home color-blue 2-transparency 80%-->
+	<color name="base2_80">80004160</color><!--primary overlay-menu home color-blue 2-transparency 50%-->
+	<color name="base3_ff">ff0c2c40</color><!--secondary overlay-submenu home menu-blue3-->
+	<color name="base3_cc">cc0c2c40</color><!--secondary overlay-submenu home-blue3-transparency 80%-->
+	<color name="base3_80">800c2c40</color><!--secondary overlay-submenu home-blue3- transparency 50%-->
+	<color name="white_cc">ccffffff</color><!--transparent white--transparency 80%-->
+	<color name="white_80">80ffffff</color><!--transparent white--transparency 50%-->
+<!--text-->
+	<color name="Color1">ffffffff</color><!--main textcolor--><!--white-->
+	<color name="Color2">ff6aa6cb</color><!--secondary textcolor--><!--light blue-->
+	<color name="Color3">ffcacaca</color><!--tertiary textcolor--><!--light grey-->
+	<color name="Color4">ff696a6c</color><!--primary dialog textcolor--><!--gray-->
+	<color name="Color5">ff000000</color><!--dark dialog textcolor-black-->
+	<color name="Color6">dd0c2134</color><!--primary columns base color--><!--transparent blue-->
+	<color name="Color8">ffff6f00</color><!--orange good-->
+	<color name="Color9">ffe5e5e5</color><!--Very light gray-->
+<!--buttons / control states-->
+	<color name="Focused">ff111111</color>
+	<color name="Disabled">ff9a9a9a</color><!-- silver grey - RGB Decimal 154, 154, 154 -->
+	<color name="Selected">ffff6f00</color>
+	<color name="Warning">ffff4e4e</color>
+</colors>

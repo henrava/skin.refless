@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<!-- RIGHTLIST VIEW ID 55 - Movies, TV Shows, Seasons, Episodes -->
+	<include name="Viewtype55_RightList">
+		<control type="group">
+			<include>global_Scrolltime</include>
+			<include>transition_Content</include>
+			<include>transition_Info</include>
+			<include>toggle_Menu</include>
+			<visible>Control.IsVisible(55)</visible>
+			<!-- CONTAINER -->
+			<control type="list" id="55">
+				<viewtype label="RightList">list</viewtype>
+				<posx>700r</posx>
+				<posy>90</posy>
+				<width>700</width>
+				<height>600</height>
+				<onleft>6000</onleft>
+				<onright>70</onright>
+				<onup>55</onup>
+				<ondown>55</ondown>
+				<pagecontrol>70</pagecontrol>
+				<preloaditems>4</preloaditems>
+				<scrolltime tween="Cubic" easing="Out">400</scrolltime>
+				<orientation>vertical</orientation>
+				<visible>[Container.Content(movies) | Container.Content(TVShows) | Container.Content(Seasons)] + ! SubString(Container.FolderPath,plugin://)</visible>
+				<itemlayout height="50" width="700">
+					<control type="label">
+						<posx>70r</posx>
+						<width>700</width>
+						<height>50</height>
+						<align>right</align>
+						<aligny>center</aligny>
+						<font>regular_30</font>
+						<textcolor>Color3</textcolor>
+						<label>$INFO[listitem.Label]</label>
+						<scroll>false</scroll>
+					</control>
+					<control type="image">
+						<posx>60r</posx>
+						<posy>8</posy>
+						<width>40</width>
+						<height>40</height>
+						<texture>$VAR[status_Overlay]</texture>
+						<colordiffuse>Color1</colordiffuse>
+					</control>
+				</itemlayout>
+				<focusedlayout height="50" width="700">
+					<control type="image">
+						<posx>600r</posx>
+						<width>580</width>
+						<height>50</height>
+						<texture>views/whitegradient.png</texture>
+						<colordiffuse>Color1</colordiffuse>
+					</control>
+					<control type="label">
+						<posx>70r</posx>
+						<width>700</width>
+						<height>50</height>
+						<label>$INFO[listitem.Label]</label>
+						<align>right</align>
+						<aligny>center</aligny>
+						<font>regular_30</font>
+						<textcolor>Color5</textcolor>
+						<scroll>false</scroll>
+					</control>
+					<control type="image">
+						<posx>60r</posx>
+						<posy>8</posy>
+						<width>40</width>
+						<height>40</height>
+						<texture>$VAR[status_Overlay]</texture>
+						<colordiffuse>Color5</colordiffuse>
+					</control>
+				</focusedlayout>
+			</control>
+			<control type="group">
+				<visible>Control.IsVisible(55)</visible>
+				<control type="image">
+					<description>Film Poster</description>
+					<posx>30</posx>
+					<posy>330</posy>
+					<width>240</width>
+					<height>360</height>
+					<aspectratio>stretch</aspectratio>
+					<fadetime>Fadetime_Thumb</fadetime>
+					<texture background="true" fallback="thumbs/default_Portrait.png">$VAR[thumb_Portrait]</texture>
+					<bordertexture colordiffuse="Color8" border="5">views/focus.png</bordertexture>
+					<bordersize>5</bordersize>
+					<visible>Container.Content(Movies) | Container.Content(TVShows)</visible>
+				</control>
+			</control>
+		</control>
+	</include>
+</includes>

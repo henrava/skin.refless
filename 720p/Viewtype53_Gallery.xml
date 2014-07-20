@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<includes>
+	<!-- VIEW ID 53 - GALLERY - Pictures Only -->
+	<include name="Viewtype53_Gallery">
+		<control type="group">
+			<visible>Control.IsVisible(53)</visible>
+			<include>transition_Info</include>
+			<include>toggle_Menu</include>
+			<include>transition_Content</include>
+			<!--strip bottom-->
+			<control type="group">
+				<left>265</left>
+				<top>610</top>
+				<control type="group">
+					<control type="label">
+						<label>$VAR[gallery_Header]</label>
+						<width>940</width>
+						<textcolor>Color1</textcolor>
+						<include>detail_Title</include>
+					</control>
+					<control type="group">
+						<visible>Window.IsActive(Pictures)</visible>
+						<control type="label">
+							<top>24</top>
+							<label>[UPPERCASE]$INFO[ListItem.PictureResolution,$LOCALIZE[21805] - ][/UPPERCASE]</label>
+							<width>750</width>
+							<include>detail_Sub</include>
+						</control>
+					</control>
+				</control>
+			</control>
+		</control>
+		<!--strip top-->
+		<control type="group">
+			<include>toggle_Menu</include>
+			<include>transition_Content</include>
+			<include>transition_Info</include>
+			<visible>Control.IsVisible(53)</visible>
+			<control type="group">
+				<left>265</left>
+				<top>120</top>
+				<control type="group">
+					<control type="label">
+						<label>$INFO[ListItem.Label]</label>
+						<width>750</width>
+						<include>detail_Title</include>
+					</control>
+					<control type="label">
+						<left>772</left>
+						<label>$INFO[Container(53).ListItem(1).Label]</label>
+						<width>750</width>
+						<include>detail_Title</include>
+						<animation effect="fade" start="100" end="30" time="0" condition="true">Conditional</animation>
+					</control>
+				</control>
+			</control>
+			<!--container-->
+			<control type="wraplist" id="53">
+				<viewtype label="Gallery">info</viewtype>
+				<left>-515</left>
+				<top>155</top>
+				<width>1900</width>
+				<height>800</height>
+				<onleft>53</onleft>
+				<onright>53</onright>
+				<onup>6000</onup>
+				<ondown>71</ondown>
+				<focusposition>1</focusposition>
+				<include>global_Scrolltime</include>
+				<pagecontrol>71</pagecontrol>
+				<orientation>horizontal</orientation>
+				<visible>Window.IsActive(pictures)</visible>
+				<itemlayout width="770" height="442">
+					<control type="image">
+						<width>770</width>
+						<height>442</height>
+						<aspectratio align="center">stretch</aspectratio>
+						<texture>frames/frame_Landscape-nf.png</texture>
+					</control>
+					<control type="group">
+						<left>10</left>
+						<top>10</top>
+						<control type="image">
+							<width>750</width>
+							<height>422</height>
+							<texture background="true">thumbs/default_Landscape.png</texture>
+							<aspectratio align="center" aligny="center">keep</aspectratio>
+						</control>
+						<control type="image">
+							<width>750</width>
+							<height>422</height>
+							<texture background="true">$VAR[thumb_Landscape]</texture>
+							<aspectratio align="center" aligny="center">scale</aspectratio>
+						</control>
+					</control>
+				</itemlayout>
+				<focusedlayout width="770" height="422">
+					<control type="image">
+						<width>770</width>
+						<height>442</height>
+						<aspectratio align="center">stretch</aspectratio>
+						<texture>frames/frame_Landscape-nf.png</texture>
+					</control>
+					<control type="group">
+						<left>10</left>
+						<top>10</top>
+						<control type="image">
+							<width>750</width>
+							<height>422</height>
+							<texture background="true">thumbs/default_Landscape.png</texture>
+							<aspectratio align="center" aligny="center">keep</aspectratio>
+						</control>
+						<control type="image">
+							<width>750</width>
+							<height>422</height>
+							<texture background="true">$VAR[thumb_Landscape]</texture>
+							<aspectratio align="center" aligny="center">scale</aspectratio>
+							<animation effect="zoom" start="100" end="173" time="200" center="352,205" tween="Cubic" condition="Control.HasFocus(8000) + !IsEmpty(ListItem.Title)">Conditional</animation>
+						</control>
+					</control>
+				</focusedlayout>
+			</control>
+			<!--frame-->
+			<control type="image">
+				<left>255</left>
+				<top>155</top>
+				<width>770</width>
+				<height>442</height>
+				<aspectratio align="center">stretch</aspectratio>
+				<texture colordiffuse="Color8">frames/frame_Landscape-fo.png</texture>
+				<animation type="Conditional" condition="Control.HasFocus(8000) + !IsEmpty(ListItem.Title)" reversible="true">
+					<effect type="zoom" time="200" center="640,330" start="100" end="173" tween="Cubic" />
+					<effect type="Fade" time="200" start="100" end="0" tween="Cubic" />
+				</animation>
+			</control>
+		</control>
+	</include>
+</includes>

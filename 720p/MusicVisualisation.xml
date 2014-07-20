@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<allowoverlay>no</allowoverlay>
+	<controls>
+		<control type="visualisation" id="2">
+			<include>screen_Dimensions</include>
+			<include>transition_Background</include>
+		</control>
+		<control type="group">
+			<visible>Player.ShowCodec</visible>
+			<control type="image">
+				<width>Screen_Width</width>
+				<height>100</height>
+				<texture>white.png</texture>
+				<colordiffuse>base2_cc</colordiffuse>
+			</control>
+			<control type="group">
+				<left>20</left>
+				<top>5</top>
+				<control type="label" id="10">
+					<width>1260</width>
+					<label>$INFO[Musicplayer.Codec,Codec: ,]$INFO[Musicplayer.Bitrate, · Bitrate: ,kbps]$INFO[MusicPlayer.Bitspersample, · Bits: ,bit]$INFO[MusicPlayer.SampleRate, · Freq: ,kHz]$INFO[MusicPlayer.Channels, · Channels: ]</label>
+					<include>detail_Sub</include>
+				</control>
+				<control type="label" id="11">
+					<top>35</top>
+					<width>1260</width>
+					<label>$LOCALIZE[250]: $INFO[Visualisation.Name] [I]($LOCALIZE[20166])[/I] · FPS: $INFO[System.FPS]</label>
+					<include>detail_Sub</include>
+				</control>
+				<control type="label" id="12">
+					<top>70</top>
+					<width>1260</width>
+					<label fallback="· (UnAvailable)">$LOCALIZE[13388]: $INFO[Visualisation.Preset]</label>
+					<include>detail_Sub</include>
+				</control>
+			</control>
+		</control>
+		<control type="group">
+			<include>transition_OSD</include>
+			<visible>[Player.ShowInfo | Window.IsActive(MusicOSD)] + ![Window.IsVisible(AddonSettings) | Window.IsVisible(SelectDialog) | Window.IsVisible(VisualisationPresetList)]</visible>
+			<include>osd_Music</include>
+			<include>osd_Seekbar</include>
+		</control>
+	</controls>
+</window>

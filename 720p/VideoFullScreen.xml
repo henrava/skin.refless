@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<defaultcontrol>-</defaultcontrol>
+	<controls>
+		<!--regular stream info-->
+		<control type="group" id="0">
+			<control type="image">
+				<width>Screen_Width</width>
+				<height>120</height>
+				<texture>white.png</texture>
+				<colordiffuse>base2_cc</colordiffuse>
+			</control>
+			<control type="group">
+				<left>20</left>
+				<top>10</top>
+				<!--line 1-->
+				<control type="label" id="10">
+					<width>1260</width>
+					<label>-</label>
+					<textcolor>Color1</textcolor>
+					<include>detail_Sub</include>
+				</control>
+				<!--line 2-->
+				<control type="label" id="11">
+					<top>40</top>
+					<width>1260</width>
+					<label>-</label>
+					<textcolor>Color1</textcolor>
+					<include>detail_Sub</include>
+				</control>
+				<!--line 3-->
+				<control type="label" id="12">
+					<top>80</top>
+					<width>1260</width>
+					<label>-</label>
+					<textcolor>Color1</textcolor>
+					<include>detail_Sub</include>
+				</control>
+			</control>
+		</control>
+	</controls>
+</window>
