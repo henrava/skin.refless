@@ -39,7 +39,7 @@
 		<control type="label">
 			<top>500</top>
 			<centerleft>50%</centerleft>
-			<width>1280</width>
+			<width>1240</width>
 			<height>20</height>
 			<label>$VAR[startup_Status]</label>
 			<font>regular_20</font>
