@@ -259,6 +259,15 @@
 						<height>49</height>
 						<texture colordiffuse="white_cc">white.png</texture>
 					</control>
+
+					<control type="image">
+						<left>5</left>
+						<top>0</top>
+						<width>10</width>
+						<height>49</height>
+						<texture colordiffuse="Color8">white.png</texture>
+					</control>
+
 					<control type="group">
 						<left>15</left>
 						<control type="label">

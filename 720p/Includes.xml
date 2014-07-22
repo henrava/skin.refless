@@ -250,16 +250,16 @@
 		<autoscroll delay="autoscroll_Delay" time="autoscroll_Time" repeat="autoscroll_Repeat">Skin.HasSetting(autoscroll.enable)</autoscroll>
 	</include>
 	<include name="container_Single">
-		<height>38</height>
-		<font>regular_22</font>
+		<height>40</height>
+		<font>regular_26</font>
 		<aligny>center</aligny>
 		<textcolor>Color1</textcolor>
 		<selectedcolor>Selected</selectedcolor>
 		<scroll>false</scroll>
 	</include>
 	<include name="container_Single-focus">
-		<height>38</height>
-		<font>regular_22</font>
+		<height>40</height>
+		<font>regular_26</font>
 		<aligny>center</aligny>
 		<textcolor>Color5</textcolor>
 		<selectedcolor>Selected</selectedcolor>

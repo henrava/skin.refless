@@ -38,8 +38,13 @@
 						<height>40</height>
 						<texture>views/focus.png</texture>
 					</control>
+					<control type="image">
+						<width>12</width>
+						<height>40</height>
+						<texture colordiffuse="Color8">views/focus.png</texture>
+					</control>
 					<control type="label">
-						<left>10</left>
+						<left>16</left>
 						<width>600</width>
 						<label>$INFO[ListItem.Label]</label>
 						<include>container_Single-focus</include>
@@ -74,13 +79,11 @@
 							<height>70</height>
 							<texture>views/focus.png</texture>
 						</control>
-
 						<control type="image">
-							<width>15</width>
+							<width>12</width>
 							<height>70</height>
 							<texture colordiffuse="Color8">views/focus.png</texture>
 						</control>
-
 						<control type="label">
 							<left>16</left>
 							<width>600</width>
