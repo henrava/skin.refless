@@ -206,7 +206,7 @@
 				<height min="50" max="screen_Height">auto</height>
 				<onback>9100</onback>
 				<onup>9110</onup>
-				<ondown>9100</ondown>
+				<ondown>9101</ondown>
 				<onright condition="Skin.HasSetting(widgets.disable) + !IsEmpty(Container(9100).ListItem.Property(Widget))">9300</onright>
 				<onleft>RunScript(script.skinshortcuts,type=hidesubmenu&amp;mainmenuID=9100)</onleft>
 				<onback>RunScript(script.skinshortcuts,type=hidesubmenu&amp;mainmenuID=9100)</onback>
@@ -231,7 +231,7 @@
 						</control>
 					</control>
 					<control type="group">
-						<left>15</left>
+						<left>18</left>
 						<control type="label">
 							<width>280</width>
 							<height>46</height>
@@ -259,7 +259,6 @@
 						<height>49</height>
 						<texture colordiffuse="white_cc">white.png</texture>
 					</control>
-
 					<control type="image">
 						<left>5</left>
 						<top>0</top>
@@ -267,9 +266,8 @@
 						<height>49</height>
 						<texture colordiffuse="Color8">white.png</texture>
 					</control>
-
 					<control type="group">
-						<left>15</left>
+						<left>18</left>
 						<control type="label">
 							<height>46</height>
 							<width>280</width>
@@ -301,6 +299,26 @@
 					</item>
 				</content>
 			</control>
+
+			<!--shutdown-->
+			<control type="button" id="9101">
+				<left>5</left>
+				<top>667</top>
+				<width>290</width>
+				<height>49</height>
+				<font>icomoon_36</font>
+				<align>center</align>
+				<aligny>center</aligny>
+				<textcolor>Color3</textcolor>
+				<focusedcolor>Color5</focusedcolor>
+				<texturenofocus colordiffuse="base2_80">white.png</texturenofocus>
+				<texturefocus colordiffuse="Color1">white.png</texturefocus>
+				<!--command is alt+e600 - ¯ÿÇ - font is icomoon - label is poweroff-->
+				<label></label>
+				<onclick>ActivateWindow(ShutdownMenu)</onclick>
+				<onup>9100</onup>
+			</control>
+
 		</control>
 	</include>
 </includes>

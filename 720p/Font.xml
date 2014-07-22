@@ -139,6 +139,11 @@
 			<size>48</size>
 		</font>
 		<font>
+			<name>icomoon_36</name>
+			<filename>icomoon.ttf</filename>
+			<size>36</size>
+		</font>
+		<font>
 			<name>icomoon_48</name>
 			<filename>icomoon.ttf</filename>
 			<size>48</size>
