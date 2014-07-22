@@ -74,14 +74,21 @@
 							<height>70</height>
 							<texture>views/focus.png</texture>
 						</control>
+
+						<control type="image">
+							<width>15</width>
+							<height>70</height>
+							<texture colordiffuse="Color8">views/focus.png</texture>
+						</control>
+
 						<control type="label">
-							<left>10</left>
+							<left>16</left>
 							<width>600</width>
 							<label>$VAR[global_Title]</label>
 							<include>container_Title-focus</include>
 						</control>
 						<control type="label">
-							<left>10</left>
+							<left>16</left>
 							<top>30</top>
 							<width>600</width>
 							<label>$VAR[global_Info]</label>
