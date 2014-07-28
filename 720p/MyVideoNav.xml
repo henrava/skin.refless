@@ -45,6 +45,7 @@
 			<!--landscape-->
 			<control type="group">
 				<control type="group">
+					<visible>Control.IsVisible(50)</visible>
 					<left>710</left>
 					<top>90</top>
 					<visible>[[Container.Content(movies) | Container.Content(tvshows)] + Skin.HasSetting(view.list.fanart)] | Container.Content(artists) | Container.Content(episodes)</visible>
@@ -77,6 +78,7 @@
 			<control type="group">
 				<left>800</left>
 				<top>80</top>
+				<visible>Control.IsVisible(50)</visible>
 				<control type="group">
 					<visible>[Container.Content(movies) | Container.Content(tvshows)] + [!Skin.HasSetting(view.list.fanart) | SubString(Container.FolderPath,plugin://)] | Container.Content(actors) | Container.Content(genres) | Container.Content(directors) | Container.Content(seasons) | Container.Content(sets)</visible>
 					<control type="image">

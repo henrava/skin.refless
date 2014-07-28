@@ -29,4 +29,11 @@
 	<color name="Disabled">ff9a9a9a</color><!-- silver grey - RGB Decimal 154, 154, 154 -->
 	<color name="Selected">ffff6f00</color>
 	<color name="Warning">ffff4e4e</color>
+
+<!--dialogs
+<color name="glyph_nf">ff7d7d7d</color>
+<color name="glyph_fo">ffffffff</color>
+<color name="Color4">FF373737</color>
+<color name="Color5">FF4c4c4c</color>
+-->
 </colors>

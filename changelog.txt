@@ -1,3 +1,15 @@
+[B]1.0.8[/B]
+- Consistency: replace <posx> with <left> and and <posy> with <top>
+- Added shutdown button
+- Replace textures 256x256 with 128x128
+- Change submenu color 
+
+[B]1.0.7[/B]
+- Some errors. Not published
+
+[B]1.0.6[/B]
+- Added missing player controls.
+
 [B]1.0.5[/B]
 - First Public Release.
 

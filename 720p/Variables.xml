@@ -123,6 +123,7 @@
 		<value condition="Container.Content(episodes)">$INFO[ListItem.Date]$INFO[ListItem.Genre, • ]</value>
 		<value condition="Container.Content(musicvideos)">$INFO[ListItem.Artist]$INFO[ListItem.Album, • ]$VAR[video_Type, • ]</value>
 		<value condition="Container.Content(files) + !SubString(Container.FolderPath,plugin://)">$VAR[video_Type,, • ]$INFO[ListItem.Duration, • , $LOCALIZE[12391]]</value>
+		<value condition="Container.Content(files) + ![IsEmpty(ListItem.Duration) + IsEmpty(ListItem.Genre) + IsEmpty(ListItem.Date) + IsEmpty(ListItem.Studio)]">$INFO[ListItem.Duration,, $LOCALIZE[12391]]$INFO[ListItem.Genre, • ]$INFO[ListItem.Date, • ]$INFO[ListItem.Studio]</value>
 		<value condition="Container.Content(artists) + !IsEmpty(ListItem.Property(Artist_Genre))">$INFO[ListItem.Property(Artist_Genre)]</value>
 		<value condition="Container.Content(artists) + !IsEmpty(ListItem.Artist)">$LOCALIZE[31145]</value>
 		<value condition="Container.Content(albums)">$INFO[ListItem.Artist]$INFO[ListItem.Year, • ]</value>
@@ -300,6 +301,7 @@ Container.PluginName
 	</variable>
 	<!--WINDOW TITLES-->
 	<variable name="window_Title.Video">
+		<value condition="Window.IsVisible(busydialog) + !Window.IsActive(virtualkeyboard)">&#160;</value>
 		<value condition="IsEmpty(Container.FolderPath)">$LOCALIZE[157]</value>
 		<value condition="StringCompare(Container.FolderPath,sources://video/)">$LOCALIZE[744]</value>
 		<value condition="StringCompare(Container.FolderPath,addons://sources/video/)">$LOCALIZE[1037]</value>
@@ -330,55 +332,62 @@ Container.PluginName
 	</variable>
 
 	<variable name="window_Title.Music">
+		<value condition="Window.IsVisible(busydialog) + !Window.IsActive(virtualkeyboard)">&#160;</value>
 		<value condition="IsEmpty(Container.FolderPath)">$LOCALIZE[2]</value>
 		<value condition="StringCompare(Container.FolderPath,videodb://musicvideos/)">$LOCALIZE[20389]</value>
-		<value condition="Container.Content(musicvideos)">$LOCALIZE[20389] [COLOR=Color2]$INFO[Container.FolderName][/COLOR]</value>
-		<value condition="SubString(Container.FolderPath,recentlyaddedalbums,Right)">$LOCALIZE[2] [COLOR=Color2]$LOCALIZE[31705][/COLOR]</value>
-		<value condition="SubString(Container.FolderPath,recentlyplayedalbums,Right)">$LOCALIZE[2] [COLOR=Color2]$LOCALIZE[31016][/COLOR]</value>
-		<value>$LOCALIZE[2] [COLOR=Color2]$INFO[Container.FolderName][/COLOR]</value>
+		<value condition="Container.Content(musicvideos)">$LOCALIZE[20389] [COLOR=Color8]$INFO[Container.FolderName][/COLOR]</value>
+		<value condition="SubString(Container.FolderPath,recentlyaddedalbums,Right)">$LOCALIZE[2] [COLOR=Color8]$LOCALIZE[31705][/COLOR]</value>
+		<value condition="SubString(Container.FolderPath,recentlyplayedalbums,Right)">$LOCALIZE[2] [COLOR=Color8]$LOCALIZE[31016][/COLOR]</value>
+		<value>$LOCALIZE[2] [COLOR=Color8]$INFO[Container.FolderName][/COLOR]</value>
 	</variable>
 	<variable name="window_Title.System">
-		<value condition="Window.IsActive(settings)">xbmc [COLOR=Color2]$LOCALIZE[10004][/COLOR]</value>
-		<value condition="Window.IsActive(systeminfo)">$LOCALIZE[13000] [COLOR=Color2]$LOCALIZE[19033][/COLOR]</value>
-		<value condition="Window.IsActive(profiles)">$LOCALIZE[13200] [COLOR=Color2]$LOCALIZE[5][/COLOR]</value>
-		<value condition="Window.IsActive(appearancesettings)">$LOCALIZE[480] [COLOR=Color2]$LOCALIZE[5][/COLOR]</value>
-		<value condition="Window.IsActive(videossettings)">$LOCALIZE[157] [COLOR=Color2]$LOCALIZE[5][/COLOR]</value>
-		<value condition="Window.IsActive(programssettings)">$LOCALIZE[0] [COLOR=Color2]$LOCALIZE[5][/COLOR]</value>
-		<value condition="Window.IsActive(musicsettings)">$LOCALIZE[2] [COLOR=Color2]$LOCALIZE[5][/COLOR]</value>
-		<value condition="Window.IsActive(picturessettings)">$LOCALIZE[1] [COLOR=Color2]$LOCALIZE[5][/COLOR]</value>
-		<value condition="Window.IsActive(networksettings)">$LOCALIZE[705] [COLOR=Color2]$LOCALIZE[5][/COLOR]</value>
-		<value condition="Window.IsActive(weathersettings)">$LOCALIZE[12600] [COLOR=Color2]$LOCALIZE[5][/COLOR]</value>
-		<value condition="Window.IsActive(systemsettings)">$LOCALIZE[13000] [COLOR=Color2]$LOCALIZE[5][/COLOR]</value>
-		<value condition="Window.IsActive(tvsettings)">$LOCALIZE[19020] [COLOR=Color2]$LOCALIZE[5][/COLOR]</value>
+		<value condition="Window.IsVisible(busydialog) + !Window.IsActive(virtualkeyboard)">&#160;</value>
+		<value condition="Window.IsActive(settings)">xbmc [COLOR=Color8]$LOCALIZE[10004][/COLOR]</value>
+		<value condition="Window.IsActive(systeminfo)">$LOCALIZE[13000] [COLOR=Color8]$LOCALIZE[19033][/COLOR]</value>
+		<value condition="Window.IsActive(profiles)">$LOCALIZE[13200] [COLOR=Color8]$LOCALIZE[5][/COLOR]</value>
+		<value condition="Window.IsActive(appearancesettings)">$LOCALIZE[480] [COLOR=Color8]$LOCALIZE[5][/COLOR]</value>
+		<value condition="Window.IsActive(videossettings)">$LOCALIZE[157] [COLOR=Color8]$LOCALIZE[5][/COLOR]</value>
+		<value condition="Window.IsActive(programssettings)">$LOCALIZE[0] [COLOR=Color8]$LOCALIZE[5][/COLOR]</value>
+		<value condition="Window.IsActive(musicsettings)">$LOCALIZE[2] [COLOR=Color8]$LOCALIZE[5][/COLOR]</value>
+		<value condition="Window.IsActive(picturessettings)">$LOCALIZE[1] [COLOR=Color8]$LOCALIZE[5][/COLOR]</value>
+		<value condition="Window.IsActive(networksettings)">$LOCALIZE[705] [COLOR=Color8]$LOCALIZE[5][/COLOR]</value>
+		<value condition="Window.IsActive(weathersettings)">$LOCALIZE[12600] [COLOR=Color8]$LOCALIZE[5][/COLOR]</value>
+		<value condition="Window.IsActive(systemsettings)">$LOCALIZE[13000] [COLOR=Color8]$LOCALIZE[5][/COLOR]</value>
+		<value condition="Window.IsActive(tvsettings)">$LOCALIZE[19020] [COLOR=Color8]$LOCALIZE[5][/COLOR]</value>
 		<value condition="Window.IsActive(filemanager)">$LOCALIZE[7]</value>
-		<value condition="Window.IsActive(skinsettings)">$LOCALIZE[5] [COLOR=Color2]$LOCALIZE[166][/COLOR]</value>
+		<value condition="Window.IsActive(skinsettings)">$LOCALIZE[5] [COLOR=Color8]$LOCALIZE[166][/COLOR]</value>
 	</variable>
 	<variable name="window_Title.Addons">
+		<value condition="Window.IsVisible(busydialog) + !Window.IsActive(virtualkeyboard)">&#160;</value>
 		<value condition="SubString(Container.FolderPath,addons://enabled/)">$LOCALIZE[24062]</value>
 		<value condition="SubString(Container.FolderPath,addons://disabled/)">$LOCALIZE[24039]</value>
 		<value condition="SubString(Container.FolderPath,addons://downloading/)">$LOCALIZE[24067]</value>
 		<value condition="SubString(Container.FolderPath,addons://outdated/)">$LOCALIZE[24043]</value>
-		<value condition="SubString(Container.FolderPath,addons://repos/)">$LOCALIZE[24000] [COLOR=Color2]$LOCALIZE[31700][/COLOR]</value>
-		<value condition="SubString(Container.FolderPath,addons://all/)">[COLOR=Color2]$LOCALIZE[593][/COLOR] $LOCALIZE[24001]</value>
+		<value condition="SubString(Container.FolderPath,addons://repos/)">$LOCALIZE[24000] [COLOR=Color8]$LOCALIZE[31700][/COLOR]</value>
+		<value condition="SubString(Container.FolderPath,addons://all/)">[COLOR=Color8]$LOCALIZE[593][/COLOR] $LOCALIZE[24001]</value>
 		<value condition="SubString(Container.FolderPath,addons://all/) + !stringcompare(Container.FolderPath,addons://all/)">$INFO[Container.Property(addoncategory)]</value>
 		<value condition="SubString(Container.FolderPath,addons://search/)">$LOCALIZE[283]</value>
 		<value condition="SubString(Container.FolderPath,addons://repo.) | SubString(Container.FolderPath,addons://repository.)">$INFO[Container.Property(reponame)]</value>
 		<value>$LOCALIZE[24001]</value>
 	</variable>
 	<variable name="window_Title.Pictures">
+		<value condition="Window.IsVisible(busydialog) + !Window.IsActive(virtualkeyboard)">&#160;</value>
 		<value condition="!SubString(Container.FolderPath,plugin)">$LOCALIZE[1]</value>
 		<value>$INFO[Container.FolderName]</value>
 	</variable>
 	<variable name="window_Title.Playlists">
-		<value condition="Window.IsVisible(videoplaylist) + !Window.IsActive(movieinformation)">$LOCALIZE[157] [COLOR=Color2]$LOCALIZE[559][/COLOR]</value>
-		<value condition="Window.IsVisible(musicplaylist) + !Window.IsActive(musicinformation)">$LOCALIZE[2] [COLOR=Color2]$LOCALIZE[559][/COLOR]</value>
+		<value condition="Window.IsVisible(busydialog) + !Window.IsActive(virtualkeyboard)">&#160;</value>
+		<value condition="Window.IsVisible(videoplaylist) + !Window.IsActive(movieinformation)">$LOCALIZE[157] [COLOR=Color8]$LOCALIZE[559][/COLOR]</value>
+		<value condition="Window.IsVisible(musicplaylist) + !Window.IsActive(musicinformation)">$LOCALIZE[2] [COLOR=Color8]$LOCALIZE[559][/COLOR]</value>
 	</variable>
 	<variable name="window_Title.Weather">
+		<value condition="Window.IsVisible(busydialog) + !Window.IsActive(virtualkeyboard)">&#160;</value>
 		<value condition="Window.IsVisible(Weather) + Weather.IsFetched">$INFO[Window.Property(WeatherProvider)]</value>
 		<value>$LOCALIZE[12600]</value>
 	</variable>
 	<variable name="window_Title.Programs">
-		<value condition="Window.IsVisible(Programs)">$LOCALIZE[0] [COLOR=Color2]$INFO[Container.FolderName][/COLOR]</value>
+		<value condition="Window.IsVisible(busydialog) + !Window.IsActive(virtualkeyboard)">&#160;</value>
+		<value condition="Window.IsVisible(Programs)">$LOCALIZE[0] [COLOR=Color8]$INFO[Container.FolderName][/COLOR]</value>
 		<value>$LOCALIZE[12600]</value>
 	</variable>
 </includes>

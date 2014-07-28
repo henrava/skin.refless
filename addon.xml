@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-	<addon id="skin.refless" version="1.05" name="Refless" provider-name="Hen">
+	<addon id="skin.refless" version="1.08" name="Refless" provider-name="Hen">
 	<requires>
 		<import addon="xbmc.gui" version="5.0.1"/>
 		<import addon="script.grab.fanart" version="0.13.0"/>
@@ -14,7 +14,7 @@
 		<summary>Refless (Refocus Less) - With a bit of Orange!</summary>
 		<description>Refless is a mod of the beautiful skin for XBMC made by Jeroen.</description>
 		<disclaimer>Mouse and touchscreen use not supported</disclaimer>
-		<license>Attribution-NonCommercial-ShareAlike 3.0 Unported.[CR](http://creativecommons.org/licenses/by-nc-sa/3.0/)</license>
+		<license>Attribution-NonCommercial-ShareAlike 4.0[CR](http://creativecommons.org/licenses/by-nc-sa/3.0/)</license>
 	</extension>
 </addon>
 

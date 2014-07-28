@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<includes>
+<includes>.
+	<default type="multiimage">
+		<include>screen_Dimensions</include>
+		<aspectratio align="center">scale</aspectratio>
+		<randomize>true</randomize>
+		<loop>yes</loop>
+		<fadetime>fadetime_Slideshow</fadetime>
+	</default>
 	<default type="scrollbar">
 		<width>10</width>
 		<showonepage>false</showonepage>
@@ -26,8 +33,8 @@
 	<default type="button">
 		<width>110</width>
 		<height>40</height>
-		<texturefocus border="2">dialogs/select-fo.png</texturefocus>
-		<texturenofocus border="2">dialogs/select-nf.png</texturenofocus>
+		<texturefocus>views/focus.png</texturefocus>
+		<texturenofocus>views/nofocus.png</texturenofocus>
 		<font>regular_20</font>
 		<textcolor>Color1</textcolor>
 		<focusedcolor>Focused</focusedcolor>
@@ -95,21 +102,21 @@
 		<spinposy>-</spinposy>
 	</default>
 	<default type="progress">
-		<texturebg border="16,0,16,0" colordiffuse="Color3">dialogs/progress/back.png</texturebg>
-		<lefttexture border="16,0,0,0" colordiffuse="Color3">dialogs/progress/left.png</lefttexture>
-		<midtexture border="0,0,0,0" colordiffuse="Color3">dialogs/progress/mid.png</midtexture>
-		<righttexture border="0,0,16,0" colordiffuse="Color3">dialogs/progress/right.png</righttexture>
+		<texturebg border="0" colordiffuse="Color3">dialogs/progress/back.png</texturebg>
+		<lefttexture border="0" colordiffuse="Color3">dialogs/progress/all.png</lefttexture>
+		<midtexture border="0" colordiffuse="Color3">dialogs/progress/all.png</midtexture>
+		<righttexture border="0" colordiffuse="Color3">dialogs/progress/all.png</righttexture>
 		<overlaytexture>-</overlaytexture>
 	</default>
 	<default type="sliderex">
 		<height>40</height>
-		<texturefocus border="3">dialogs/select-fo.png</texturefocus>
-		<texturenofocus border="3">dialogs/select-nf.png</texturenofocus>
+		<texturefocus border="3">views/focus.png</texturefocus>
+		<texturenofocus border="3">views/nofocus.png</texturenofocus>
 		<sliderwidth>100</sliderwidth>
 		<sliderheight>20</sliderheight>
 		<texturesliderbar>dialogs/slider/bar.png</texturesliderbar>
-		<textureslidernib>-</textureslidernib>
-		<textureslidernibfocus>-</textureslidernibfocus>
+		<textureslidernib>dialogs/slider/nib-nf.png</textureslidernib>
+		<textureslidernibfocus>dialogs/slider/nib-fo.png</textureslidernibfocus>
 		<pulseonselect>false</pulseonselect>
 	</default>
 	<default type="spincontrol">

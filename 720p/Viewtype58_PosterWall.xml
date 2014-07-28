@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<!-- VIEW ID 58 - Movies Only - POSTERSWALL -->
 	<include name="Viewtype58_PosterWall">
@@ -10,8 +10,8 @@
 			<visible>Control.IsVisible(58)</visible>
 			<control type="panel" id="58">
 				<viewtype label="PosterWall">panel</viewtype>
-				<posx>60</posx>
-				<posy>100</posy>
+				<left>60</left>
+				<top>100</top>
 				<width>1180</width>
 				<height>570</height>
 				<onleft>6000</onleft>
@@ -53,11 +53,11 @@
 			<!--Bottom Movie info-->
 			<control type="group">
 				<visible>Control.IsVisible(58)</visible>
-				<posx>60</posx>
-				<posy>680</posy>
+				<left>60</left>
+				<top>680</top>
 				<control type="label">
 					<width>800</width>
-					<label>$INFO[ListItem.Title]$INFO[ListItem.Year, • ]</label>
+					<label>$INFO[ListItem.Title]$INFO[ListItem.Year, â€¢ ]</label>
 					<align>left</align>
 					<font>semibold_22-U</font>
 					<textcolor>Color8</textcolor>
