@@ -202,9 +202,7 @@
 		<textcolor>Color3</textcolor>
 		<font>regular_20</font>
 		<aligny>top</aligny>
-		<!--	<autoscroll delay="autoscroll_Delay" time="autoscroll_Time" repeat="autoscroll_Repeat">Skin.HasSetting(autoscroll.enable)</autoscroll> -->
-		<!-- use a numeric value for repeat here, change into constant again when xbmc bug is fixed-->
-		<autoscroll delay="autoscroll_Delay" time="autoscroll_Time" repeat="1000">Skin.HasSetting(autoscroll.enable)</autoscroll>
+		<autoscroll delay="autoscroll_Delay" time="autoscroll_Time" repeat="autoscroll_Repeat">Skin.HasSetting(autoscroll.enable)</autoscroll>
 	</include>
 	<!--CONTAINER-->
 	<include name="container_Title">
@@ -776,7 +774,6 @@
 		<control type="label">
 			<label>$VAR[window_Title.Video]</label>
 			<include>windowTitle</include>
-		<textcolor>Color8</textcolor>
 		</control>
 	</include>
 	<include name="windowTitle_Music">
@@ -801,7 +798,7 @@
 		<control type="label">
 			<label>$VAR[window_Title.System]</label>
 			<include>windowTitle</include>
-			<animation effect="slide" end="-27" time="0" condition="Window.IsActive(systeminfo) | Window.IsActive(profiles) | Window.IsActive(skinsettings) | Window.IsActive(filemanager)">Conditional</animation>
+			<animation effect="slide" end="-27" time="0" condition="Window.IsActive(settings) | Window.IsActive(systeminfo) | Window.IsActive(profiles) | Window.IsActive(skinsettings) | Window.IsActive(filemanager)">Conditional</animation>
 		</control>
 	</include>
 	<include name="windowTitle_Addons">

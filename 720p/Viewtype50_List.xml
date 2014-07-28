@@ -50,7 +50,7 @@
 						<include>container_Single-focus</include>
 					</control>
 				</focusedlayout>
-				<itemlayout condition="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(artists) | Container.Content(albums) | Container.Content(songs) | SubString(Container.FolderPath,playlistvideo://) | [[Container.Content(files) | Container.Content(addons) | Window.IsActive(pictures)] + Container.HasFiles]" width="680" height="67">
+				<itemlayout condition="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(artists) | Container.Content(albums) | Container.Content(songs) | SubString(Container.FolderPath,playlistvideo://) | [[Container.Content(files) | Container.Content(addons) | Window.IsActive(pictures) | Window.IsActive(programs)] + !Container.HasFolders]" width="680" height="67">
 					<control type="label">
 						<left>10</left>
 						<width>600</width>
@@ -72,7 +72,7 @@
 						<texture colordiffuse="Color2">$VAR[status_Overlay]</texture>
 					</control>
 				</itemlayout>
-				<focusedlayout condition="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(artists) | Container.Content(albums) | Container.Content(songs) | SubString(Container.FolderPath,playlistvideo://) | [[Container.Content(files) | Container.Content(addons) | Window.IsActive(pictures)] + Container.HasFiles]" width="620" height="67">
+				<focusedlayout condition="Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes) | Container.Content(musicvideos) | Container.Content(artists) | Container.Content(albums) | Container.Content(songs) | SubString(Container.FolderPath,playlistvideo://) | [[Container.Content(files) | Container.Content(addons) | Window.IsActive(pictures) | Window.IsActive(programs)] + !Container.HasFolders]" width="620" height="67">
 					<control type="group">
 						<control type="image">
 							<width>680</width>
@@ -129,7 +129,7 @@
 					<include>fadeinout</include>
 					<aspectratio align="center" aligny="top">keep</aspectratio>
 					<fadetime>fadetime_Thumb</fadetime>
-					<visible>!SubString(Container.FolderPath,plugin://)</visible>
+					<visible>!SubString(Container.FolderPath,plugin://) + !IsEmpty(Container.FolderPath)</visible>
 				</control>
 			</control>
 		</control>
@@ -141,7 +141,7 @@
 			<include>toggle_Menu</include>
 			<include>transition_Info</include>
 			<include>transition_Content</include>
-			<visible>Control.IsVisible(50) + ![IsEmpty(Container.FolderPath) | StringCompare(Container.FolderPath,addons://enabled/) | StringCompare(Container.FolderPath,addons://all/)] + [StringCompare(Container.FolderPath,addons://outdated/) | StringCompare(Container.FolderPath,addons://disabled/) | SubString(Container.FolderPath,addons://enabled/) | StringCompare(Container.FolderPath,addons://repos/) | SubString(Container.FolderPath,addons://all/) | Container.Content(addons) | Container.Content(files) + SubString(Container.FolderPath,plugin://plugin.)]</visible>
+			<visible>Control.IsVisible(50) + [SubString(Container.FolderPath,addons://) | SubString(Container.FolderPath,plugin://plugin)] + ![StringCompare(Container.FolderPath,addons://enabled/) | StringCompare(Container.FolderPath,addons://all/)] + ![Container.Content(movies) | Container.Content(episodes)]</visible>
 			<control type="image">
 				<width>532</width>
 				<height>256</height>
@@ -151,23 +151,15 @@
 				<aspectratio align="left" aligny="top">keep</aspectratio>
 				<fadetime>fadetime_Thumb</fadetime>
 			</control>
-			<control type="grouplist" id="1000">
+			<control type="textbox" id="1003">
 				<left>7</left>
-				<top>268</top>
-				<itemgap>0</itemgap>
+				<top>315</top>
+				<width>532</width>
+				<height>330</height>
+				<label>$VAR[global_Plot]</label>
+				<autoscroll>!Window.IsActive(addoninformation)</autoscroll>
+				<include>detail_Text</include>
 				<visible>Control.IsVisible(50) + [Container.Content(addons) | SubString(Container.FolderPath,plugin://)]</visible>
-				<control type="label">
-					<width>532</width>
-					<label>$VAR[global_Info]</label>
-					<include>detail_Sub</include>
-				</control>
-				<control type="textbox" id="1003">
-					<width>532</width>
-					<height>330</height>
-					<label>$VAR[global_Plot]</label>
-					<autoscroll>!Window.IsActive(addoninformation)</autoscroll>
-					<include>detail_Text</include>
-				</control>
 			</control>
 		</control>
 	</include>

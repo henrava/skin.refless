@@ -103,7 +103,7 @@
 					<item id="4">
 						<label>Refless</label>
 						<label2>$LOCALIZE[31200] · $LOCALIZE[31202] · $LOCALIZE[20445]</label2>
-						<icon>DefaultFavourite.png</icon>
+						<icon>DefaultIconFavourite.png</icon>
 						<onclick>ActivateWindow(skinsettings)</onclick>
 					</item>
 					<item id="5">
@@ -127,7 +127,7 @@
 					<item id="8">
 						<label>$LOCALIZE[13000]</label>
 						<label2>$LOCALIZE[31281] · $LOCALIZE[14095] · $LOCALIZE[14094]</label2>
-						<icon>DefaultSettings.png</icon>
+						<icon>DefaultIconSettings.png</icon>
 						<onclick>ActivateWindow(SystemSettings)</onclick>
 					</item>
 					<item id="9">

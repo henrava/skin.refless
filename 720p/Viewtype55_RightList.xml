@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <includes>
 	<!-- RIGHTLIST VIEW ID 55 - Movies, TV Shows, Seasons, Episodes -->
 	<include name="Viewtype55_RightList">
@@ -11,8 +11,8 @@
 			<!-- CONTAINER -->
 			<control type="list" id="55">
 				<viewtype label="RightList">list</viewtype>
-				<posx>700r</posx>
-				<posy>90</posy>
+				<left>700r</left>
+				<top>90</top>
 				<width>700</width>
 				<height>600</height>
 				<onleft>6000</onleft>
@@ -26,7 +26,7 @@
 				<visible>[Container.Content(movies) | Container.Content(TVShows) | Container.Content(Seasons)] + ! SubString(Container.FolderPath,plugin://)</visible>
 				<itemlayout height="50" width="700">
 					<control type="label">
-						<posx>70r</posx>
+						<left>70r</left>
 						<width>700</width>
 						<height>50</height>
 						<align>right</align>
@@ -37,8 +37,8 @@
 						<scroll>false</scroll>
 					</control>
 					<control type="image">
-						<posx>60r</posx>
-						<posy>8</posy>
+						<left>60r</left>
+						<top>8</top>
 						<width>40</width>
 						<height>40</height>
 						<texture>$VAR[status_Overlay]</texture>
@@ -47,14 +47,14 @@
 				</itemlayout>
 				<focusedlayout height="50" width="700">
 					<control type="image">
-						<posx>600r</posx>
+						<left>600r</left>
 						<width>580</width>
 						<height>50</height>
 						<texture>views/whitegradient.png</texture>
 						<colordiffuse>Color1</colordiffuse>
 					</control>
 					<control type="label">
-						<posx>70r</posx>
+						<left>70r</left>
 						<width>700</width>
 						<height>50</height>
 						<label>$INFO[listitem.Label]</label>
@@ -65,8 +65,8 @@
 						<scroll>false</scroll>
 					</control>
 					<control type="image">
-						<posx>60r</posx>
-						<posy>8</posy>
+						<left>60r</left>
+						<top>8</top>
 						<width>40</width>
 						<height>40</height>
 						<texture>$VAR[status_Overlay]</texture>
@@ -78,8 +78,8 @@
 				<visible>Control.IsVisible(55)</visible>
 				<control type="image">
 					<description>Film Poster</description>
-					<posx>30</posx>
-					<posy>330</posy>
+					<left>30</left>
+					<top>330</top>
 					<width>240</width>
 					<height>360</height>
 					<aspectratio>stretch</aspectratio>

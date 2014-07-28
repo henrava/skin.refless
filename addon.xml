@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-	<addon id="skin.refless" version="1.06" name="Refless" provider-name="Hen">
+	<addon id="skin.refless" version="1.08" name="Refless" provider-name="Hen">
 	<requires>
 		<import addon="xbmc.gui" version="5.0.1"/>
 		<import addon="script.grab.fanart" version="0.13.0"/>

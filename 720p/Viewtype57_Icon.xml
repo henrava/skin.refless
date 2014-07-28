@@ -178,7 +178,7 @@
 			<include>transition_Content</include>
 			<include>transition_Info</include>
 			<include>toggle_Menu</include>
-			<visible>Container.Content(addons) | Container.Content(albums) | Container.Content(artists) | Container.Content(songs) | Window.IsActive(pictures) | Window.IsActive(MyMusicSongs.xml)</visible>
+			<visible>Container.Content(addons) | Container.Content(albums) | Container.Content(artists) | Container.Content(songs) | Window.IsActive(pictures) | [Window.IsActive(programs) + Container.HasFiles] | [Container.Content(files) + !Container.HasFiles] | [Window.IsActive(MusicFiles) + !Container.HasFiles]</visible>
 			<itemlayout width="188" height="188">
 				<include>view_IconSquare-ContainerCommons</include>
 			</itemlayout>
@@ -247,7 +247,7 @@
 				<pagecontrol>70</pagecontrol>
 				<preloaditems>2</preloaditems>
 				<include>global_ListScroll</include>
-				<visible>Container.Content(addons) | Container.Content(albums) | Container.Content(artists) | Container.Content(songs) | Window.IsActive(pictures) | Window.IsActive(programs)</visible>
+				<visible>Container.Content(addons) | Container.Content(albums) | Container.Content(artists) | Container.Content(songs) | Window.IsActive(pictures) | [Window.IsActive(programs) + Container.HasFiles] | [Container.Content(files) + !Container.HasFiles] | [Window.IsActive(MusicFiles) + !Container.HasFiles]</visible>
 				<itemlayout height="184" width="184">
 					<control type="image">
 						<width>174</width>

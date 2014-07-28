@@ -89,7 +89,7 @@
 						<font>regular_20</font>
 						<aligny>center</aligny>
 						<selectedcolor>Selected</selectedcolor>
-						<info>ListItem.Label</info>
+						<label>$INFO[ListItem.Label]</label>
 					</control>
 				</itemlayout>
 				<focusedlayout height="40">
@@ -97,14 +97,14 @@
 						<width>550</width>
 						<height>41</height>
 						<visible>Control.HasFocus(120)</visible>
-						<texture border="5">white.png</texture>
+						<texture>white.png</texture>
 					</control>
 					<control type="label">
 						<width>530</width>
 						<height>40</height>
 						<font>regular_20</font>
 						<selectedcolor>Selected</selectedcolor>
-						<info>ListItem.Label</info>
+						<label>$INFO[ListItem.Label]</label>
 					</control>
 				</focusedlayout>
 			</control>

@@ -50,8 +50,6 @@
 					<itemlayout width="400" height="40">
 						<control type="image">
 							<width>400</width>
-							<height>40</height>
-							<texture border="3">dialogs/select-nf.png</texture>
 							<include>dialog_CommonList</include>
 						</control>
 						<control type="label">
